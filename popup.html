@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="./popup.css">
   <title>Timer</title>
 </head>
 <body>
   <h1>Scroll Companion</h1>
-  <button id="btn">Click Me</button>
+  <label class="switch">
+    <input type="checkbox">
+    <span class="slider"></span>
+  </label>
+  <hr />
+  <label class="switch">
+    <input type="checkbox">
+    <span class="slider"></span>
+  </label>
+  <hr />
+  <label for="timerLength">Set Timer For:</label>
+  <div id="timeButtons">
+    <button id="fiveMin">5</button>
+    <button id="tenMin">10</button>
+    <br>
+    <button id="fifteenMin">15</button>
+    <button id="twentyMin">20</button>
+    <br>
+    <button id="twentyfiveMin">25</button>
+    <button id="thirtyMin">30</button>
+  </div>
 </body>
 </html>

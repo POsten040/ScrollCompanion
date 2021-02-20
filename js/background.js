@@ -13,3 +13,13 @@ chrome.tabs.onActivated.addListener(function() {
     }
   });
 }); 
+//SAVE PREFERENCES BETWEEN CHROME RESTART
+// To read:
+
+//     var myStoredValue = localStorage["TheKeyToMyStoredValue"];
+// // To write:
+
+//     localStorage["TheKeyToMyStoredValue"] = myNewValueToStore;
+// // To get rid of:
+
+//     delete localStorage["TheKeyToMyStoredValue"];

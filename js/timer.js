@@ -4,12 +4,8 @@ function Timer(){
   }, 1000)
 }
 
-alert("Content script activated");
-
 chrome.tabs.query({active: true, currentWindow: true}, tabs => {
   let url = tabs[0].url;
-  console.log(url);
-  console.log(typeof(url))
   if(url.includes("reddit")){
     console.log(url)
   }
