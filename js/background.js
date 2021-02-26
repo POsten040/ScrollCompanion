@@ -1,9 +1,9 @@
 
-function Timer(){
-  setTimeout(()=>{
-    alert("This timer went off babe")
-  }, 1000)
-}
+// function Timer(){
+//   setTimeout(()=>{
+//     alert("This timer went off babe")
+//   }, 1000)
+// }
 
 // chrome.tabs.onActivated.addListener(function() {
 //   chrome.tabs.query({active: true, currentWindow: true}, tabs => {
