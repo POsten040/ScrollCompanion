@@ -1,22 +1,29 @@
-** Scroll Companion
+**Scroll Companion**
+<br>
+Coded by: Patrick Osten
+<br>
+2/2021
 
-Project's Purpose or Goal: The project is a chrome extension to help users spend time effectively when browsing the internet, by setting a timer for specific websites that prompts users to reflect on how long they've browsed, and what the goal of that browsing is.
+**Project Description**
+- The project is a chrome extension to help users spend time effectively when browsing the internet, by setting a timer for specific websites that prompts users to reflect on how long they've browsed, and what the goal of that browsing is.
 
-List the absolute minimum features the project requires to meet this purpose or goal:
+**Technologies Used**
 
-A timer that starts on certain urls
-A simple UI that allows picking web urls to track, and setting timer length
-What tools, frameworks, libraries, APIs, modules and/or other resources (whatever is specific to your track, and your language) will you use to create this MVP? List them all here. Be specific.
+- Chrome manifest V2
+- Javascript ES6
+- HTML5
+- CSS
 
-Chrome manifest V2
-Javascript ES6
-HTML5
-CSS
-If you finish developing the minimum viable product (MVP) with time to spare, what will you work on next? Describe these features here: Be specific.
+**Streach Goals** 
 
-Mood tracking element, that records self reported moods at end of timer
-Statistics on websites visited and time spent browsing 
-A way to add webpages to a list, or specify a certain page, to be loaded or linked to when the timer goes off(for instance a music video the user likes)
-What additional tools, frameworks, libraries, APIs, or other resources will these additional features require?
+- Mood tracking element, that records self reported moods at end of timer
+- Statistics on websites visited and time spent browsing 
+- A way to add webpages to a list, or specify a certain page, to be loaded or linked to when the timer goes off(for instance a music video the user likes)
 
-TBD
+Copyright 2021 Patrick Osten
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
