@@ -17,21 +17,19 @@
 
 let userDomains = [];
 
-chrome.alarms.onAlarm.addListener(function( alarm ) {
-  console.log("Got an alarm!", alarm);
-  document.getElementById('modal').modal('show');
-});
 
 chrome.tabs.onActivated.addListener(function() {
   chrome.tabs.query({active: true, currentWindow: true}, tabs => {
     let url = tabs[0].url;
-    console.log(url)
+    console.log(tabs)
     let urlArr = url.split('/');
     console.log(urlArr)
     let runTimerBoolArr = urlArr.map(e=> e.includes("reddit"));
     console.log(runTimerBoolArr)
     if(runTimerBoolArr.find(e=> e===true)){
-      chrome.alarms.create("userAlarm", {delayInMinutes: .1, periodInMinutes: .1});
+      console.log(tabs[0].id);
+      chrome.tabs.sendMessage(tabs[0].id, "Hello")
+      
     }
   });
 }); 
