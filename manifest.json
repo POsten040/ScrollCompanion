@@ -6,10 +6,16 @@
   "background": {    
     "service_worker": "background.js"    
   },
-  "content_scripts":[],
+  "content_scripts":[
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/content.js"]
+    }
+  ],
   "permissions": [
     "storage", 
-    "tabs"
+    "tabs",
+    "alarms"
     ],
   "action": {    
     "default_popup": "popup.html",

@@ -31,23 +31,28 @@ let userDomains = [];
 //     }
 //   });
 // }); 
+let tabId = null;
 
 chrome.tabs.onHighlighted.addListener(function() {
   chrome.tabs.query({active: true, currentWindow: true}, tabs => {
-    
+    tabId = tabs[0].id;
     let url = tabs[0].url;
     let urlArr = url.split('/');
-    let runTimerBoolArr = urlArr.map(e=> e.includes("reddit"));
+    let runTimerBoolArr = urlArr.map(e=> e.includes(""));
     if(runTimerBoolArr.find(e=> e===true)){
-      console.log(tabs[0].id);
-      chrome.tabs.sendMessage(tabs[0].id, "Hello")
+      // console.log(tabs[0].id);
       
+      chrome.alarms.create("userAlarm", {delayInMinutes: .1, periodInMinutes: .1});
     }
   });
 }); 
 
 
-
+chrome.alarms.onAlarm.addListener(function( alarm ) {
+  console.log(tabId)
+  chrome.tabs.sendMessage(tabId, "Hello")
+  chrome.alarms.clear(alarm.name)
+})
 
 //SAVE PREFERENCES BETWEEN CHROME RESTART
 // To read:
