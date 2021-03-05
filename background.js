@@ -13,6 +13,14 @@
 //     }
 //   });
 // }); 
+// $('#myModal').modal({ show: false})
+
+let userDomains = [];
+
+chrome.alarms.onAlarm.addListener(function( alarm ) {
+  console.log("Got an alarm!", alarm);
+  document.getElementById('modal').modal('show');
+});
 
 chrome.tabs.onActivated.addListener(function() {
   chrome.tabs.query({active: true, currentWindow: true}, tabs => {
@@ -23,7 +31,7 @@ chrome.tabs.onActivated.addListener(function() {
     let runTimerBoolArr = urlArr.map(e=> e.includes("reddit"));
     console.log(runTimerBoolArr)
     if(runTimerBoolArr.find(e=> e===true)){
-      Timer();
+      chrome.alarms.create("userAlarm", {delayInMinutes: .1, periodInMinutes: .1});
     }
   });
 }); 
