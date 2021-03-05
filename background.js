@@ -18,14 +18,26 @@
 let userDomains = [];
 
 
-chrome.tabs.onActivated.addListener(function() {
+// chrome.tabs.onUpdated.addListener(function() {
+//   chrome.tabs.query({active: true, currentWindow: true}, tabs => {
+    
+//     let url = tabs[0].url;
+//     let urlArr = url.split('/');
+//     let runTimerBoolArr = urlArr.map(e=> e.includes("reddit"));
+//     if(runTimerBoolArr.find(e=> e===true)){
+//       console.log(tabs[0].id);
+//       chrome.tabs.sendMessage(tabs[0].id, "Hello")
+      
+//     }
+//   });
+// }); 
+
+chrome.tabs.onHighlighted.addListener(function() {
   chrome.tabs.query({active: true, currentWindow: true}, tabs => {
+    
     let url = tabs[0].url;
-    console.log(tabs)
     let urlArr = url.split('/');
-    console.log(urlArr)
     let runTimerBoolArr = urlArr.map(e=> e.includes("reddit"));
-    console.log(runTimerBoolArr)
     if(runTimerBoolArr.find(e=> e===true)){
       console.log(tabs[0].id);
       chrome.tabs.sendMessage(tabs[0].id, "Hello")
@@ -33,6 +45,8 @@ chrome.tabs.onActivated.addListener(function() {
     }
   });
 }); 
+
+
 
 
 //SAVE PREFERENCES BETWEEN CHROME RESTART
