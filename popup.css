@@ -3,6 +3,9 @@ body {
   background-image: url(images/waterfall_1080.gif);
   background-size: cover;
 }
+/* .displayStatus {
+  display: none;
+} */
 .on {
   background-color: rgb(17, 158, 139);
 }

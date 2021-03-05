@@ -50,7 +50,7 @@ chrome.tabs.onHighlighted.addListener(function() {
 
 chrome.alarms.onAlarm.addListener(function( alarm ) {
   console.log(tabId)
-  chrome.tabs.sendMessage(tabId, "Hello")
+  chrome.tabs.sendMessage(tabId, "timerFinish")
   chrome.alarms.clear(alarm.name)
 })
 

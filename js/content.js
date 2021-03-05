@@ -1,14 +1,9 @@
-chrome.runtime.onMessage.addListener(onUrlMatch);
+chrome.runtime.onMessage.addListener(onAlarm);
 
-function onUrlMatch(message, sender, sendResponse){
+function onAlarm(message, sender, sendResponse){
   
-  // console.log(message);
   console.log("Got an alarm!");
-  console.log(message);
-  console.log(sendResponse);
-  console.log(sender);
 }
-
 
 
   // 
