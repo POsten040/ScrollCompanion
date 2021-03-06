@@ -4,8 +4,20 @@ Coded by: Patrick Osten
 <br>
 2/2021
 
+**image**
+
+-images forthcoming-
+
 **Project Description**
 - The project is a chrome extension to help users spend time effectively when browsing the internet, by setting a timer for specific websites that prompts users to reflect on how long they've browsed, and what the goal of that browsing is.
+
+**Use**
+
+-Examples and description of code forthcoming-
+
+**Bugs**
+
+-Bugs forthcoming-
 
 **Technologies Used**
 
