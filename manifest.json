@@ -2,9 +2,10 @@
   "name": "Scroll Companion",  
   "description": "A timer for you",  
   "version": "1.0",  
-  "manifest_version": 3,
+  "manifest_version": 2,
   "background": {    
-    "service_worker": "background.js"    
+    "scripts": ["background.js"],
+    "persistent": false
   },
   "content_scripts":[
     {
@@ -18,7 +19,7 @@
     "alarms",
     "notifications"
     ],
-  "action": {    
+  "browser_action": {    
     "default_popup": "popup.html",
     "default_icon": {      
       "16": "/images/pixel_waterfall_16.png",
