@@ -47,12 +47,21 @@ chrome.tabs.onHighlighted.addListener(function() {
   });
 }); 
 
+const options = {
+  type: "basic",
+  title: "It Is Time",
+  message: "To do crime",
+  iconUrl: "./images/pixel_waterfall_16.png",
+  eventTime: 5000
+}
 
 chrome.alarms.onAlarm.addListener(function( alarm ) {
   console.log(tabId)
-  chrome.tabs.sendMessage(tabId, "timerFinish")
+  chrome.notifications.create('', options)
+  // chrome.tabs.sendMessage(tabId, "timerFinish")
   chrome.alarms.clear(alarm.name)
 })
+
 
 //SAVE PREFERENCES BETWEEN CHROME RESTART
 // To read:
