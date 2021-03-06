@@ -9,7 +9,13 @@ Coded by: Patrick Osten
 -images forthcoming-
 
 **Project Description**
-- The project is a chrome extension to help users spend time effectively when browsing the internet, by setting a timer for specific websites that prompts users to reflect on how long they've browsed, and what the goal of that browsing is.
+
+The project is a chrome extension to help users spend time effectively when browsing the internet, by setting a timer for specific websites that prompts users to reflect on how long they've browsed, and what the goal of that browsing is. 
+### Planned Additional features:
+- options for customizing the notifications time, theme, buttons, and text
+- link to external websites
+- 'Hard Mode' where the windows is automatically closed when the timer finishes
+- 
 
 **Use**
 
@@ -21,16 +27,13 @@ Coded by: Patrick Osten
 
 **Technologies Used**
 
+- Bootstrap 4.4.1
 - Chrome manifest V2
 - Javascript ES6
 - HTML5
 - CSS
 
-**Streach Goals** 
 
-- Mood tracking element, that records self reported moods at end of timer
-- Statistics on websites visited and time spent browsing 
-- A way to add webpages to a list, or specify a certain page, to be loaded or linked to when the timer goes off(for instance a music video the user likes)
 
 Copyright 2021 Patrick Osten
 
