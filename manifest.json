@@ -10,7 +10,7 @@
   "content_scripts":[
     {
       "matches": ["<all_urls>"],
-      "js": ["js/content.js", "js/jquery3.6.0.slim.js"]
+      "js": ["js/content.js", "jquery3.6.0.slim.js", "js/popup.js"]
     }
   ],
   "permissions": [

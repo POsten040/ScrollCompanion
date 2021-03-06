@@ -8,29 +8,33 @@
   <link rel="stylesheet" href="./popup.css">
   <title>Timer</title>
 </head>
-<body>
-  <h1 id="h1">Scroll Companion</h1>
-  <button class="on" id="onButton">On/Off</button>
-  <hr />
-  <form id="domain"></form>
-    <label for="timerLength">Set Timer For:</label>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <button id="fiveMin">5</button>
-          <button id="tenMin">10</button>
+<body id="body" class="lightMode">
+  <!-- <img src="./images/waterfall_1080.gif" id="waterfallImg"> -->
+  <div id="holder">
+
+    <h1 id="h1">Scroll Companion</h1>
+    <button class="on" id="onButton">On/Off</button>
+    <button id="darkModeButton">Darkmode</button>
+    <br />
+    <form id="domain"></form>
+      <label for="timerLength">Set Timer For:</label>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <button id="fiveMin">5</button>
+            <button id="tenMin">10</button>
+            <button id="fifteenMin">15</button>
+            <button id="twentyMin">20</button>
+          </div>
+          <div class="col-md-6">
+          </div>
         </div>
-        <div class="col-md-6">
-          <button id="fifteenMin">15</button>
-          <button id="twentyMin">20</button>
-        </div>
-      </div>
-    </div>
-  
-  
-    <label for="domain">Domain To Watch</label>
-    <input type="text" name="domain" id="domain">
-  </form>
+      </div>  
+      <label for="domain">Domain To Watch</label>
+      <input type="text" name="domain" id="domain">
+    </form>
+  </div>
 <script src="js/popup.js"></script>
+<script src="jquery3.6.0.slim.js"></script>
 </body>
 </html>

@@ -12,10 +12,11 @@ Coded by: Patrick Osten
 
 The project is a chrome extension to help users spend time effectively when browsing the internet, by setting a timer for specific websites that prompts users to reflect on how long they've browsed, and what the goal of that browsing is. 
 ### Planned Additional features:
-- options for customizing the notifications time, theme, buttons, and text
-- link to external websites
+- options for customizing the notifications time duration, theme, buttons, and text
+- link to external websites when the timer finishes
 - 'Hard Mode' where the windows is automatically closed when the timer finishes
-- 
+- snapshot of active tab/content when the timer finishes
+- soundscapes
 
 **Use**
 

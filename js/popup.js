@@ -5,6 +5,18 @@ form.addEventListener("submit", function(){
 })
 
 let onOff = document.getElementById("onButton");
+let darkMode = document.getElementById("darkModeButton");
+let body = document.getElementById("body");
+
+darkMode.addEventListener("click", function(){
+  if(body.className == "lightMode"){
+    body.classList.remove("lightMode");
+    body.classList.add("darkMode");
+  } else {
+    body.classList.remove("darkMode");
+    body.classList.add("lightMode");
+  }
+})
 
 onOff.addEventListener("click", function(){
   if(onOff.className == "on"){

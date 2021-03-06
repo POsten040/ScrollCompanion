@@ -42,7 +42,7 @@ chrome.tabs.onHighlighted.addListener(function() {
     if(runTimerBoolArr.find(e=> e===true)){
       // console.log(tabs[0].id);
       
-      chrome.alarms.create("userAlarm", {delayInMinutes: .1, periodInMinutes: .1});
+      chrome.alarms.create("userAlarm", {delayInMinutes: 1, periodInMinutes: 1});
     }
   });
 }); 
@@ -51,7 +51,7 @@ const options = {
   type: "basic",
   title: "It Is Time",
   message: "To do crime",
-  iconUrl: "./images/pixel_waterfall_16.png",
+  iconUrl: "./images/pixel_waterfall_128.png",
   eventTime: 5000
 }
 
