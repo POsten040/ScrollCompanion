@@ -1,41 +1,41 @@
-body {
-  color: black;
-  background-color: #93b9bc;
-}
-
-body.darkMode {
+div.darkMode {
   background-image: url("images/1080_waterfall_darkmode.gif");
   background-size: contain;
-  background-repeat: no-repeat;
+  background-repeat: round;
   position: static;
   z-index: 0;
   width: 440px;
   color:white;
+  background-color:#404029;
 }
 
-
-body.lightMode {
+div.lightMode {
   background-image: url("images/1080_waterfall_lightmode.gif");
   background-size: contain;
-  background-repeat: no-repeat;
+  background-repeat: round;
   position: static;
   z-index: 0;
   width: 440px;
   color: black;
+  background-color: #93b9bc;
 }
+/* div#holder{
+  background-size: cover;
+  border:5px lightseagreen;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+} */
 .on {
   background-color: rgb(17, 158, 139);
 }
 .off {
   background-color: brown;
 }
-button {  
-  height: 30px; 
-  width: 30px;  
-  outline: none;  
-  margin: 10px;  
-  border: none;  
-  -radius: 2px;
+
+
+button#fiveMin {  
+  background-color: indianred;
 }
 button.current {  
   box-shadow: 0 0 0 2px white,              0 0 0 4px rgb(50, 149, 156);
@@ -56,22 +56,29 @@ button {
 }
 
 button#fiveMin {
-  background-color:#818679;
+  background:linear-gradient(#65699A, #65839A);
 }
 button#tenMin {
-  background-color: #71888e;
+  background:linear-gradient(#78639C, #636B9C)
 }
 button#fifteenMin {
-  background-color: #589ea7;
+  background:linear-gradient(#9D6289, #94629D)
 }
 button#twentyMin {
-  background-color: #42bd95;
+  background:linear-gradient(#A15E62 ,#A15E84 )
 }
 button#twentyfiveMin {
-  background-color:#1fe07e;
+  background:linear-gradient(#A3705C, #A35C6B)
 }
 button#thirtyMin {
-  background-color:#0af55b;
+  background:linear-gradient(#A49D5B, #A4785B)
 }
+.textInput {
+  float: right;
+  max-width: 80px;
+  color: rgb(29, 29, 29);
+  background-color: rgba(198, 194, 201, 0.479);
+}
+
 
 

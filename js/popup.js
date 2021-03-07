@@ -6,15 +6,15 @@ form.addEventListener("submit", function(){
 
 let onOff = document.getElementById("onButton");
 let darkMode = document.getElementById("darkModeButton");
-let body = document.getElementById("body");
+let holder = document.getElementById("holder");
 
 darkMode.addEventListener("click", function(){
-  if(body.className == "lightMode"){
-    body.classList.remove("lightMode");
-    body.classList.add("darkMode");
+  if(holder.className == "lightMode"){
+    holder.classList.remove("lightMode");
+    holder.classList.add("darkMode");
   } else {
-    body.classList.remove("darkMode");
-    body.classList.add("lightMode");
+    holder.classList.remove("darkMode");
+    holder.classList.add("lightMode");
   }
 })
 

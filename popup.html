@@ -8,30 +8,35 @@
   <link rel="stylesheet" href="./popup.css">
   <title>Timer</title>
 </head>
-<body id="body" class="lightMode">
+<body id="body" >
   <!-- <img src="./images/waterfall_1080.gif" id="waterfallImg"> -->
-  <div id="holder">
+  <div class="lightMode" id="holder">
 
     <h1 id="h1">Scroll Companion</h1>
-    <button class="on" id="onButton">On/Off</button>
-    <button id="darkModeButton">Darkmode</button>
+    <button class="on btn" id="onButton">On/Off</button>
+    <button class="btn" id="darkModeButton">Darkmode</button>
     <br />
     <form id="domain"></form>
       <label for="timerLength">Set Timer For:</label>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <button id="fiveMin">5</button>
-            <button id="tenMin">10</button>
-            <button id="fifteenMin">15</button>
-            <button id="twentyMin">20</button>
-          </div>
-          <div class="col-md-6">
-          </div>
+      <div class="form-check">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button id="fiveMin" type="button" class="btn btn-secondary">5</button>
+          <button id="tenMin" type="button" class="btn btn-secondary">10</button>
+          <button id="fifteenMin" type="button" class="btn btn-secondary">15</button>
+          <button id="twentyMin" type="button" class="btn btn-secondary">20</button>
         </div>
+        <br/>
+        <label for="customMin">Custom Minutes</label>
+        <input id="customMin" type="number" class="textInput"/>
       </div>  
       <label for="domain">Domain To Watch</label>
-      <input type="text" name="domain" id="domain">
+      <input class="textInput" type="text" name="domain" id="domain">
+      <br/>
+      <label for="domain">URL Keywords</label>
+      <input class="textInput" type="text" name="domain" id="keywords">
+      <br/>
+      <label for="domain">Top Level Domain To Watch</label>
+      <input class="textInput" type="text" name="domain" id="topDomain">
     </form>
   </div>
 <script src="js/popup.js"></script>
