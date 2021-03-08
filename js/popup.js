@@ -6,8 +6,7 @@ $("#formSubmit").click(function(){
     domain: $("#domain").val(),
     keywords: $("#keywords").val(),
     topDomain: $("#topDomain").val(),
-    onNewTab: $("#onNewTabButton").val(),
-    onChangeTab: $("#onChangeTabButton").val()
+    watchMethod: $("input:radio[name=watchMethodRadioButtons]:checked").val(),
   }
   chrome.runtime.sendMessage(formInput);
   if(formInput.domain != ""){
