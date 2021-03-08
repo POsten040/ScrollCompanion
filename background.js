@@ -1,51 +1,55 @@
 
-// function Timer(){
-//   setTimeout(()=>{
-//     alert("This timer went off babe")
-//   }, 1000)
-// }
+let userInput = {
+  minutes: null,
+  customMin: null,
+  domain: null,
+  keywords: null,
+  topDomain: null
+}
+chrome.runtime.onMessage.addListener(onUserInput);
+function onUserInput(formMessage){
+  console.log(formMessage)
+  userInput = formMessage;
+  if(userInput.minutes == null && userInput.customMin != null){
+    userInput.minutes = userInput.customMin;
+    console.log(userInput)
+  } else if(userInput.customMin == null){
+    userInput.minutes = 1;
+    console.log(userInput);
+  }
+}
 
-// chrome.tabs.onActivated.addListener(function() {
-//   chrome.tabs.query({active: true, currentWindow: true}, tabs => {
-//     let url = tabs[0].url;
-//     if(url.includes("reddit")){
-//       Timer();
-//     }
-//   });
-// }); 
-// $('#myModal').modal({ show: false})
-
-let userDomains = [];
-
-
-// chrome.tabs.onUpdated.addListener(function() {
-//   chrome.tabs.query({active: true, currentWindow: true}, tabs => {
-    
-//     let url = tabs[0].url;
-//     let urlArr = url.split('/');
-//     let runTimerBoolArr = urlArr.map(e=> e.includes("reddit"));
-//     if(runTimerBoolArr.find(e=> e===true)){
-//       console.log(tabs[0].id);
-//       chrome.tabs.sendMessage(tabs[0].id, "Hello")
-      
-//     }
-//   });
-// }); 
 let tabId = null;
 
 chrome.tabs.onHighlighted.addListener(function() {
-  chrome.tabs.query({active: true, currentWindow: true}, tabs => {
-    tabId = tabs[0].id;
-    let url = tabs[0].url;
-    let urlArr = url.split('/');
-    let runTimerBoolArr = urlArr.map(e=> e.includes(""));
-    if(runTimerBoolArr.find(e=> e===true)){
-      // console.log(tabs[0].id);
-      
-      chrome.alarms.create("userAlarm", {delayInMinutes: 1, periodInMinutes: 1});
-    }
-  });
+  if(userInput.domain === null){
+    console.log("Scroll Alone")
+  } else {
+    chrome.tabs.query({active: true, currentWindow: true}, tabs => {
+      tabId = tabs[0].id;
+      let url = tabs[0].url;
+      let urlArr = url.split('/');
+      let domains = urlArr.splice(0, 3);
+      if(userInput.keywords != null){
+        console.log(userInput.minutes);
+        if(domains.includes(userInput.domain) && urlArr.includes(userInput.keywords)){
+          // console.log(tabs[0].id);
+          chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
+          console.log(chrome.alarms.get(userAlarm))
+        }
+      } else if (userInput.domain != null){
+        if(domains.includes(userInput.domain)){
+          console.log(userInput.domains);
+          chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
+          console.log(chrome.alarms.get(userAlarm))
+        }
+      } else {
+        console.log("No Alarm Parameters Present")
+      }
+    });
+  }
 }); 
+
 
 const options = {
   type: "basic",

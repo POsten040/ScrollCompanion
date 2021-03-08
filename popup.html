@@ -13,33 +13,34 @@
   <div class="lightMode" id="holder">
 
     <h1 id="h1">Scroll Companion</h1>
-    <button class="on btn" id="onButton">On/Off</button>
+    <button class="off btn" id="onButton">Off</button>
     <button class="btn" id="darkModeButton">Darkmode</button>
     <br />
-    <form id="domain"></form>
+    <div>
       <label for="timerLength">Set Timer For:</label>
       <div class="form-check">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-          <button id="fiveMin" type="button" class="btn btn-secondary">5</button>
-          <button id="tenMin" type="button" class="btn btn-secondary">10</button>
-          <button id="fifteenMin" type="button" class="btn btn-secondary">15</button>
-          <button id="twentyMin" type="button" class="btn btn-secondary">20</button>
+          <input value="5" id="fiveMin" name="minRadioButtons" type="radio" class="btn btn-secondary">5</input>
+          <input value="10" id="tenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">10</input>
+          <input value="15" id="fifteenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">15</input>
+          <input value="20" id="twentyMin" name="minRadioButtons" type="radio" class="btn btn-secondary">20</input>
         </div>
         <br/>
         <label for="customMin">Custom Minutes</label>
         <input id="customMin" type="number" class="textInput"/>
       </div>  
       <label for="domain">Domain To Watch</label>
-      <input class="textInput" type="text" name="domain" id="domain">
+      <input class="textInput" type="text" name="domain" id="domain" required>
       <br/>
-      <label for="domain">URL Keywords</label>
-      <input class="textInput" type="text" name="domain" id="keywords">
+      <label for="keywords">URL Keywords</label>
+      <input class="textInput" type="text" name="keywords" id="keywords">
       <br/>
-      <label for="domain">Top Level Domain To Watch</label>
-      <input class="textInput" type="text" name="domain" id="topDomain">
-    </form>
+      <!-- <label for="topDomain">Top Level Domain To Watch</label>
+      <input class="textInput" type="text" name="domain" id="topDomain"> -->
+      <button id="formSubmit" class="btn">Submit</button>
+    </div>
   </div>
+<script src="jquery.js"></script>
 <script src="js/popup.js"></script>
-<script src="jquery3.6.0.slim.js"></script>
 </body>
 </html>
