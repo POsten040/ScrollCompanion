@@ -1,7 +1,12 @@
 
-let form = document.getElementById("domain");
-form.addEventListener("submit", function(){
-  console.log("form submitted")
+
+let formSubmitButton = $("#formSubmit");
+formSubmitButton.click(function(){
+  let minutes = $('input:radio[name=minRadioButtons]:checked').val();;
+  console.log("form submitted");
+  // console.log(formSubmitButton)
+  console.log(minutes)
+  // chrome.runtime.sendMessage()
 })
 
 let onOff = document.getElementById("onButton");
