@@ -10,15 +10,22 @@ $("#formSubmit").click(function(){
     onChangeTab: $("#onChangeTabButton").val()
   }
   chrome.runtime.sendMessage(formInput);
-  $("#displayDomains").append("<li>" + formInput.domain + "</li>");
-  $("#domain").text("");
+  if(formInput.domain != ""){
+    $("#displayDomains").append("<li>" + formInput.domain + "</li>");
+  }
+  document.getElementById("fiveMin").checked =false;
+  $("#customMin").val("");
+  $("#domain").val("");
+  $("#displayDomains").val("");
+  $("#keywords").val("");
+  $("#topDomain").val("");
 })
 
 $("#clearSettings").click(function(){
-  $("#domain").text("");
-  $("#displayDomains").text("");
-  $("#keywords").text("");
-  $("#topDomain").text("");
+  $("#domain").val("");
+  $("#displayDomains").val("");
+  $("#keywords").val("");
+  $("#topDomain").val("");
   const resetSettings = {
     minutes: null,
     customMin: null,

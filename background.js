@@ -4,7 +4,7 @@ let userInput = {
   customMin: null,
   domain: "",
   keywords: "",
-  topDomain: null,
+  topDomain: "",
   onNewTab: false,
   onChangeTab: false
 }
@@ -12,19 +12,15 @@ let userInput = {
 chrome.runtime.onMessage.addListener(onUserInput);
 function onUserInput(message){
   console.log(message)
-  if(message.minutes){
-    userInput = message;
-    if(userInput.minutes == null && userInput.customMin != null){
-      userInput.minutes = userInput.customMin;
-      console.log(userInput)
-    } else if(userInput.customMin == null){
-      userInput.minutes = 1;
-      console.log(userInput);
-    }
+  userInput = message;
+  if(userInput.minutes === null && userInput.customMin != null){
+    userInput.minutes = userInput.customMin;
+    console.log(userInput)
+  } else if(userInput.minutes === null && userInput.customMin === null){
+    userInput.minutes = 1;
+    console.log(userInput);
   }
-  // } else if (formMessage.on){
-  //   onOffState.on = formMessage.on;
-  // }
+  console.log(userInput)
 }
 
 let tabId = null;
