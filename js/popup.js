@@ -2,10 +2,18 @@
 
 let formSubmitButton = $("#formSubmit");
 formSubmitButton.click(function(){
-  let minutes = $('input:radio[name=minRadioButtons]:checked').val();;
+  let minutes = parseInt($('input:radio[name=minRadioButtons]:checked').val());
+  let customMin = parseInt($("#customMin").val())
+  let domain = $("#domain").val();
+  let keywords = $("#keywords").val();
+  let topDomain = $("#topDomain").val();
   console.log("form submitted");
   // console.log(formSubmitButton)
   console.log(minutes)
+  console.log(customMin)
+  console.log(domain)
+  console.log(keywords)
+  console.log(topDomain)
   // chrome.runtime.sendMessage()
 })
 
