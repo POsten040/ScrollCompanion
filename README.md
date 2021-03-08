@@ -14,7 +14,7 @@ The project is a chrome extension to help users spend time effectively when brow
 ### Planned Additional features:
 - options for customizing the notifications time duration, theme, buttons, and text
 - link to external websites when the timer finishes
-- 'Hard Mode' where the windows is automatically closed when the timer finishes
+- 'ScrollComPAINion' where the windows is automatically closed when the timer finishes
 - snapshot of active tab/content when the timer finishes
 - soundscapes
 
@@ -25,6 +25,14 @@ The project is a chrome extension to help users spend time effectively when brow
 **Bugs**
 
 -Bugs forthcoming-
+
+**Resources**
+- [Coding Train- Chrome Extensions Playlist](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bL9VOMT65ahNEri9uqLWfS)
+- [Evil Tester- How to Create a Chrome Extension - JavaScript Tutorial](https://www.youtube.com/watch?v=Olz4wo-ILwI)
+- [Chrome Extension Docs:](https://developer.chrome.com/docs/extensions/mv2/)
+    - [Getting Started](https://developer.chrome.com/docs/extensions/mv2/getstarted/)
+    - [Messgae Passing](https://developer.chrome.com/docs/extensions/mv2/messaging/)
+    - [Background Script](https://developer.chrome.com/docs/extensions/mv2/background_pages/)
 
 **Technologies Used**
 
