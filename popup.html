@@ -13,8 +13,13 @@
   <div class="lightMode" id="holder">
 
     <h1 id="h1">Scroll Companion</h1>
+    <span>
+      <ul id="displayDomains">
+
+      </ul>
+    </span>
     <button class="off btn" id="onButton">Off</button>
-    <button class="btn" id="darkModeButton">Darkmode</button>
+    <button class="off btn" id="darkModeButton">Darkmode</button>
     <br />
     <div>
       <label for="timerLength">Set Timer For:</label>
@@ -26,18 +31,21 @@
           <input value="20" id="twentyMin" name="minRadioButtons" type="radio" class="btn btn-secondary">20</input>
         </div>
         <br/>
-        <label for="customMin">Custom Minutes</label>
-        <input id="customMin" type="number" class="textInput"/>
       </div>  
+      <label for="customMin">Custom Minutes</label>
+      <input id="customMin" type="number" class="textInput"/>
+      <br/>
       <label for="domain">Domain To Watch</label>
       <input class="textInput" type="text" name="domain" id="domain" required>
       <br/>
       <label for="keywords">URL Keywords</label>
       <input class="textInput" type="text" name="keywords" id="keywords">
       <br/>
+      <input value="true" id="onNewTabButton" name="watchMethodRadioButtons" type="radio" class="btn btn-secondary">On Create New Tab</input>
+      <input value="true" id="onChangeTabButton" name="watchMethodRadioButtons" type="radio" class="btn btn-secondary">On Shift Focus to Tab</input>
       <!-- <label for="topDomain">Top Level Domain To Watch</label>
       <input class="textInput" type="text" name="domain" id="topDomain"> -->
-      <button id="formSubmit" class="btn">Submit</button>
+      <button id="formSubmit" class="btn">Submit</button><button id="clearSettings" class="btn">Clear Settings</button>
     </div>
   </div>
 <script src="jquery.js"></script>

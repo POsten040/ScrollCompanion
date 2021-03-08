@@ -36,10 +36,8 @@ div.lightMode {
   color: rgb(176, 245, 230);
   text-shadow: 1px 2px 5px #dca873;
 }
-#darkModeButton {
-  background-color: #302b33;
-  color: rgb(176, 245, 230);
-  text-shadow: 1px 2px 5px #dca873;
+ul#displayDomains {
+  float: right;
 }
 
 button#fiveMin {  
