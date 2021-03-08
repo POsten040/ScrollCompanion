@@ -2,13 +2,13 @@
 let userInput = {
   minutes: null,
   customMin: null,
-  domain: null,
-  keywords: null,
+  domain: "",
+  keywords: "",
   topDomain: null
 }
+//Message comes from form button
 chrome.runtime.onMessage.addListener(onUserInput);
 function onUserInput(formMessage){
-  console.log(formMessage)
   userInput = formMessage;
   if(userInput.minutes == null && userInput.customMin != null){
     userInput.minutes = userInput.customMin;
@@ -21,6 +21,7 @@ function onUserInput(formMessage){
 
 let tabId = null;
 
+//running in the background for matching urls
 chrome.tabs.onHighlighted.addListener(function() {
   if(userInput.domain === null){
     console.log("Scroll Alone")
@@ -30,14 +31,13 @@ chrome.tabs.onHighlighted.addListener(function() {
       let url = tabs[0].url;
       let urlArr = url.split('/');
       let domains = urlArr.splice(0, 3);
-      if(userInput.keywords != null){
+      if(userInput.keywords != ""){
         console.log(userInput.minutes);
         if(domains.includes(userInput.domain) && urlArr.includes(userInput.keywords)){
-          // console.log(tabs[0].id);
           chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
           console.log(chrome.alarms.get(userAlarm))
         }
-      } else if (userInput.domain != null){
+      } else if (userInput.domain != ""){
         if(domains.includes(userInput.domain)){
           console.log(userInput.domains);
           chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
@@ -59,6 +59,7 @@ const options = {
   eventTime: 5000
 }
 
+//revceives alarm after timer
 chrome.alarms.onAlarm.addListener(function( alarm ) {
   console.log(tabId)
   chrome.notifications.create('', options)
