@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="./popup.css">
   <title>Timer</title>
@@ -20,11 +21,19 @@
           <div>
             <label for="timerLength">Set Timer For:</label>
             <div class="form-check">
-              <div class="btn-group mr-2" role="group" aria-label="First group">
-                <input value="5" id="fiveMin" name="minRadioButtons" type="radio" class="btn btn-secondary">5</input>
-                <input value="10" id="tenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">10</input>
-                <input value="15" id="fifteenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">15</input>
-                <input value="20" id="twentyMin" name="minRadioButtons" type="radio" class="btn btn-secondary">20</input>
+              <div id="minuteButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn off active">
+                  <input value="5" id="fiveMin" name="minRadioButtons" type="radio" class="btn btn-secondary">5</input>
+                </label>
+                <label class="btn off">
+                  <input value="10" id="tenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">10</input>
+                </label>
+                <label class="btn off">
+                  <input value="15" id="fifteenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">15</input>
+                </label>
+                <label class="btn off">
+                  <input value="20" id="twentyMin" name="minRadioButtons" type="radio" class="btn btn-secondary">20</input>
+                </label>
               </div>
               <br/>
             </div>
@@ -39,10 +48,15 @@
           <label for="keywords">URL Keywords</label>
           <input class="textInput" type="text" name="keywords" id="keywords">
           <br/>
-          <input value="onNewTab" id="onNewTabButton" name="watchMethodRadioButtons" type="radio" class="btn btn-secondary">On Create New Tab</input>
-          <input value="onChangeTab" id="onChangeTabButton" name="watchMethodRadioButtons" type="radio" class="btn btn-secondary">On Shift Focus to Tab</input>
-          <!-- <label for="topDomain">Top Level Domain To Watch</label>
-          <input class="textInput" type="text" name="domain" id="topDomain"> -->
+          <span>What Kind of Tab Event Should I Watch For?</span>
+          <div id="tabButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn off active">
+              <input value="onNewTab" id="onNewTabButton" name="watchMethodRadioButtons" type="radio" class="btn" autocomplete="off">Create</input>
+            </label>
+            <label class="btn off">
+              <input value="onChangeTab" id="onChangeTabButton" name="watchMethodRadioButtons" type="radio" class="btn" autocomplete="off">Highlight</input>
+            </label>
+          </div>
           <button id="formSubmit" class="btn">Submit</button>
           <br/>
           <button id="clearSettings" class="btn">Clear Settings</button>
@@ -57,6 +71,33 @@
       </div>
     </div>
   </div>
+  <details>
+    <summary> Notification Settings:</summary>
+    <form id="notificationForm">
+      <label for="title">
+        Title:
+        <input type="text" id="title" class="textInput">
+      </label>
+      <label for="message">
+        Message:
+        <input type="text" id="message" class="textInput">
+      </label>
+      <br/>
+      <label class="btn off notif">
+        <input value="requireInteraction" id="notificationSettingInteract" type="radio" class="notif" autocomplete="off">Require Interaction</input>
+      </label>
+      <label class="btn off">
+        <input value="silent" id="notificationSettingSilent" type="radio" class="notif" autocomplete="off">Silent</input>
+      </label>
+      <button class="on">Submit</button>
+    </form>
+  </details>
+  <div id="settingsDisplay">
+    <ul>
+
+    </ul>
+  </div>
+
 <script src="jquery.js"></script>
 <script src="js/popup.js"></script>
 </body>
