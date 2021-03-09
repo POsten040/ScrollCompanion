@@ -3,6 +3,7 @@ let userInput = {
   minutes: null,
   customMin: null,
   domain: "",
+  urlCaptures: [],
   keywords: "",
   topDomain: "",
   watchMethod: "onNewTab"
@@ -15,12 +16,9 @@ function onUserInput(message){
   userInput = message;
   if(userInput.minutes === null && userInput.customMin != null){
     userInput.minutes = userInput.customMin;
-    console.log(userInput)
   } else if(userInput.minutes === null && userInput.customMin === null){
     userInput.minutes = 1;
-    console.log(userInput);
   } else if (userInput.on){
-    console.log(userInput)
     onOffState = userInput;
   }
 }
@@ -91,11 +89,22 @@ chrome.tabs.onHighlighted.addListener(function() {
     }
   }
 });
-//running in the background for matching urls
-
-
-
-const options = {
+let userNotification = {
+  type: null,
+  title: null,
+  message: null, 
+  iconUrl: null,
+  eventTime: null,
+  message: null,
+  priority: null,
+  silent: null,
+  requireInteraction: null,
+}
+chrome.runtime.onMessage.addListener(OnNotificationSettings)
+function OnNotificationSettings(message){
+  userNotifcation = message;
+}
+let options = {
   type: "basic",
   title: "It Is Time",
   message: "To do crime",

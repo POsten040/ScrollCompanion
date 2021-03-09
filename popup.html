@@ -11,41 +11,50 @@
 <body id="body" >
   <!-- <img src="./images/waterfall_1080.gif" id="waterfallImg"> -->
   <div class="lightMode" id="holder">
-
-    <h1 id="h1">Scroll Companion</h1>
-    <span>
-      <ul id="displayDomains">
-
-      </ul>
-    </span>
-    <button class="off btn" id="onButton">Off</button>
-    <button class="off btn" id="darkModeButton">Darkmode</button>
-    <br />
-    <div>
-      <label for="timerLength">Set Timer For:</label>
-      <div class="form-check">
-        <div class="btn-group mr-2" role="group" aria-label="First group">
-          <input value="5" id="fiveMin" name="minRadioButtons" type="radio" class="btn btn-secondary">5</input>
-          <input value="10" id="tenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">10</input>
-          <input value="15" id="fifteenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">15</input>
-          <input value="20" id="twentyMin" name="minRadioButtons" type="radio" class="btn btn-secondary">20</input>
+    <div class="container">
+      <h1 id="h1">Scroll Companion</h1>
+      <button class="off btn" id="onButton">Off</button>
+      <button class="off btn" id="darkModeButton">Darkmode</button>
+      <div class="row">
+        <div class="col-sm-4">
+          <div>
+            <label for="timerLength">Set Timer For:</label>
+            <div class="form-check">
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <input value="5" id="fiveMin" name="minRadioButtons" type="radio" class="btn btn-secondary">5</input>
+                <input value="10" id="tenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">10</input>
+                <input value="15" id="fifteenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">15</input>
+                <input value="20" id="twentyMin" name="minRadioButtons" type="radio" class="btn btn-secondary">20</input>
+              </div>
+              <br/>
+            </div>
+          </div>
+          <br />
+          <label for="customMin">Custom Minutes</label>
+          <input id="customMin" type="number" class="textInput"/>
+          <br/>
+          <label for="domain">Domain To Watch</label>
+          <input class="textInput" type="text" name="domain" id="domain" required>
+          <br/>
+          <label for="keywords">URL Keywords</label>
+          <input class="textInput" type="text" name="keywords" id="keywords">
+          <br/>
+          <input value="onNewTab" id="onNewTabButton" name="watchMethodRadioButtons" type="radio" class="btn btn-secondary">On Create New Tab</input>
+          <input value="onChangeTab" id="onChangeTabButton" name="watchMethodRadioButtons" type="radio" class="btn btn-secondary">On Shift Focus to Tab</input>
+          <!-- <label for="topDomain">Top Level Domain To Watch</label>
+          <input class="textInput" type="text" name="domain" id="topDomain"> -->
+          <button id="formSubmit" class="btn">Submit</button>
+          <br/>
+          <button id="clearSettings" class="btn">Clear Settings</button>
         </div>
-        <br/>
-      </div>  
-      <label for="customMin">Custom Minutes</label>
-      <input id="customMin" type="number" class="textInput"/>
-      <br/>
-      <label for="domain">Domain To Watch</label>
-      <input class="textInput" type="text" name="domain" id="domain" required>
-      <br/>
-      <label for="keywords">URL Keywords</label>
-      <input class="textInput" type="text" name="keywords" id="keywords">
-      <br/>
-      <input value="onNewTab" id="onNewTabButton" name="watchMethodRadioButtons" type="radio" class="btn btn-secondary">On Create New Tab</input>
-      <input value="onChangeTab" id="onChangeTabButton" name="watchMethodRadioButtons" type="radio" class="btn btn-secondary">On Shift Focus to Tab</input>
-      <!-- <label for="topDomain">Top Level Domain To Watch</label>
-      <input class="textInput" type="text" name="domain" id="topDomain"> -->
-      <button id="formSubmit" class="btn">Submit</button><button id="clearSettings" class="btn">Clear Settings</button>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+          <span id="displayDomainSpan">
+            <ul id="displayDomains">
+            </ul>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 <script src="jquery.js"></script>
