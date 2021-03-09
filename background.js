@@ -31,7 +31,6 @@ function onUserInput(message){
 //   // tabs.map(url => url.match(regEx, gi))
 //   console.log(tabs);
 // })
-
 let tabId = null;
 
 chrome.tabs.onCreated.addListener(function() {
@@ -44,15 +43,15 @@ chrome.tabs.onCreated.addListener(function() {
         let url = tabs[tabs.length-1].pendingUrl;
         let urlArr = url.split('/');
         let domains = urlArr.splice(0, 3);
-        console.log(domains);
+        let matchingDomain = domains.find(e=> e.includes(userInput.domain));
+        let matchingKeyword = urlArr.find(e=> e.includes(userInput.keywords))
         if(userInput.keywords != ""){
-          console.log(userInput.minutes);
-          if(domains.includes(userInput.domain) && urlArr.includes(userInput.keywords)){
+          if(matchingKeyword.includes(userInput.keywords) && matchingDomain.includes(userInput.domain)){
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
           }
-        } else if (userInput.domain != ""){
-          if(domains.includes(userInput.domain)){
-            console.log(userInput.domain);
+        } else if (userInput.domain != ""){ 
+          if(matchingDomain.includes(userInput.domain)){
+            console.log("timer created");
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
           }
         } else {
@@ -68,20 +67,21 @@ chrome.tabs.onHighlighted.addListener(function() {
     
     if(userInput.domain === null){
     } else {
-      console.log("watch on change tab")
       chrome.tabs.query({active: true, currentWindow: true}, tabs => {
+        console.log(tabs)
         tabId = tabs[0].id;
         let url = tabs[0].url;
         let urlArr = url.split('/');
         let domains = urlArr.splice(0, 3);
+        let matchingDomain = domains.find(e=> e.includes(userInput.domain));
+        let matchingKeyword = urlArr.find(e=> e.includes(userInput.keywords))
         if(userInput.keywords != ""){
-          console.log(userInput.keywords);
-          if(domains.includes(userInput.domain) && urlArr.includes(userInput.keywords)){
+          if(matchingKeyword.includes(userInput.keywords) && matchingDomain.includes(userInput.domain)){
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
           }
-        } else if (userInput.domain != ""){
-          if(domains.includes(userInput.domain)){
-            console.log(userInput.domains);
+        } else if (userInput.domain != ""){ 
+          if(matchingDomain.includes(userInput.domain)){
+            console.log("timer created");
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
           }
         } else {
@@ -105,9 +105,7 @@ const options = {
 
 //revceives alarm after timer
 chrome.alarms.onAlarm.addListener(function( alarm ) {
-  console.log(tabId)
   chrome.notifications.create('', options)
-  // chrome.tabs.sendMessage(tabId, "timerFinish")
   chrome.alarms.clear(alarm.name)
 })
 
