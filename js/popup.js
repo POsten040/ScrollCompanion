@@ -61,7 +61,7 @@ $("#onButton").click(function(){
     chrome.runtime.sendMessage({on:false})
   }
 })
-$("#interact").click(function(){
+$("#interactButton").click(function(){
   console.log("click")
   if($("#interact").hasClass("off")){
     console.log("switch")
@@ -72,14 +72,17 @@ $("#interact").click(function(){
     $("#interact").toggleClass("off");
   }
 })
+// $("#interactButton").click(function(){
+//   console.log("input")
+// })
 $("#silent").click(function(){
   console.log("click")
   if($("#silent").hasClass("off")){
     console.log("switch")
-    $("#silent").toggleClass("off");
+    $("#silent").toggleClass("off").text("Yes");
     $("#silent").toggleClass("on");
   } else if ($("#silent").hasClass("on")){
-    $("#silent").toggleClass("on");
+    $("#silent").toggleClass("on").text("No");
     $("#silent").toggleClass("off");
   }
 })

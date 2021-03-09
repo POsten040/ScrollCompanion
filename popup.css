@@ -70,7 +70,7 @@ div#tabButtonHolder{
   color: rgb(29, 29, 29);
   background-color: rgba(198, 194, 201, 0.479);
 }
-input#interactButton{
+input.notifRadio{
   opacity: 0;
   width: 0;
   height: 0;
