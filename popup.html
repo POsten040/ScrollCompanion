@@ -23,7 +23,7 @@
             <div class="form-check">
               <div id="minuteButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn off active">
-                  <input value="5" id="fiveMin" name="minRadioButtons" type="radio" class="btn btn-secondary">5</input>
+                  <input value="5" name="minRadioButtons" type="radio" class="btn btn-secondary">5</input>
                 </label>
                 <label class="btn off">
                   <input value="10" id="tenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">10</input>
@@ -57,7 +57,66 @@
               <input value="onChangeTab" id="onChangeTabButton" name="watchMethodRadioButtons" type="radio" class="btn" autocomplete="off">Highlight</input>
             </label>
           </div>
-          <button id="formSubmit" class="btn">Submit</button>
+          <details>
+            <summary> Notification Settings:</summary>
+              <row>
+                <col-md>
+                  <span class="notifLabels">Title:</span>
+                </col-md>
+                <col-md>
+                  <label class="notifTextInput" for="title">
+                  <input type="text" id="title" class="textInput">
+                </col-md>
+              </label>
+              </row>
+              <br/>
+              <row>
+                <col-md>
+                  <span class="notifLabels">Message:</span>
+                </col-md>
+                <col-md>
+                  <label class="notifTextInput" for="message">
+                    <input type="text" id="message" class="textInput">
+                  </label>
+                </col-md>
+              </row>
+              <br/>
+              <row>
+                <col-md>
+                  <span class="notifLabels">Event Time:</span>
+                </col-md>
+                <col-md>
+                  <label class="notifTextInput" for="eventTime">
+                    <input type="number" id="eventTime" class="textInput">
+                  </label>
+                </col-md>
+              </row>
+              <br/>
+              <row>
+                <col-md>
+                  <span class="notifLabels">Require Interaction:</span>
+                </col-md>
+                <col-md>
+                  <label id="interact" class="btn off">
+                    <input value="true" name="interact" type="radio" id="interactButton" class="notifRadio">No</input>
+                  </label>
+                </col-md>
+              </row>
+              <br/>
+              <row>
+                <col-md>
+                  <span class="notifLabels">Silent:</span>
+                </col-md>
+                <col-md>
+                  <label id="silent" class="btn off">
+                    <input value="true" id="silentButton" name="silent" type="radio" class="notifRadio">No</input>
+                  </label>
+                </col-md>
+              </row>
+              <br/>
+            </container>
+          </details>
+          <button id="formSubmit" class="btn on">Submit</button>
           <br/>
           <button id="clearSettings" class="btn">Clear Settings</button>
         </div>
@@ -72,66 +131,7 @@
     </div>
   </div>
   <container>
-  <details>
-    <summary> Notification Settings:</summary>
-      <row>
-        <col-md>
-          <span class="notifLabels">Title:</span>
-        </col-md>
-        <col-md>
-          <label class="notifTextInput" for="title">
-          <input type="text" id="title" class="textInput">
-        </col-md>
-      </label>
-      </row>
-      <br/>
-      <row>
-        <col-md>
-          <span class="notifLabels">Message:</span>
-        </col-md>
-        <col-md>
-          <label class="notifTextInput" for="message">
-            <input type="text" id="message" class="textInput">
-          </label>
-        </col-md>
-      </row>
-      <br/>
-      <row>
-        <col-md>
-          <span class="notifLabels">Event Time:</span>
-        </col-md>
-        <col-md>
-          <label class="notifTextInput" for="eventTime">
-            <input type="number" id="eventTime" class="textInput">
-          </label>
-        </col-md>
-      </row>
-      <br/>
-      <row>
-        <col-md>
-          <span class="notifLabels">Require Interaction:</span>
-        </col-md>
-        <col-md>
-          <label id="interact" class="btn off">
-            <input value="true" name="interact" type="radio" id="interactButton" class="notifRadio">No</input>
-          </label>
-        </col-md>
-      </row>
-      <br/>
-      <row>
-        <col-md>
-          <span class="notifLabels">Silent:</span>
-        </col-md>
-        <col-md>
-          <label id="silent" class="btn off">
-            <input value="true" id="silentButton" name="silent" type="radio" class="notifRadio">No</input>
-          </label>
-        </col-md>
-      </row>
-      <br/>
-      <button id="notificationSubmit" class="on">Submit</button>
-    </container>
-  </details>
+  
   <div id="settingsDisplay">
     <ul>
 

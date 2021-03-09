@@ -1,18 +1,33 @@
 
 $("#formSubmit").click(function(){
   let formInput = {
-    minutes: parseInt($('input:radio[name=minRadioButtons]:checked').val()),
-    customMin: parseInt($("#customMin").val()),
-    domain: $("#domain").val(),
-    keywords: $("#keywords").val(),
-    topDomain: $("#topDomain").val(),
-    watchMethod: $("input:radio[name=watchMethodRadioButtons]:checked").val(),
+    minutes: parseInt(($('input:radio[name=minRadioButtons]:checked').val() != null ? $('input:radio[name=minRadioButtons]:checked').val() : $("#customMin").val())),
+    customMin: parseInt(($("#customMin").val() != null) ? $("#customMin").val() : 1),
+    domain: ($("#domain").val() != "") ? $("#domain").val() : "<all_urls>",
+    keywords: ($("#keywords").val() != "") ? $("#keywords").val() : "",
+    // topDomain: $("#topDomain").val(),
+    watchMethod: ($("input:radio[name=watchMethodRadioButtons]:checked").val() != undefined) ? $("input:radio[name=watchMethodRadioButtons]:checked").val() : "onNewTab",
   }
-  chrome.runtime.sendMessage(formInput);
+  let notifFormInput = {
+    iconUrl: "images/pixel_waterfall_128.png",
+    type:"basic",
+    title: ($("#title").val() === "") ? "Generic Title" : $("#title").val(),
+    message: ($("#message").val() === "") ? "The Time Is Now" : $("#message").val(),
+    eventTime: ($("#eventTime").val() === "") ? 5000 : $("#eventTime").val(),
+    silent: ($('input:radio[name=silent]:checked').val() != undefined) ? true : false,
+    requireInteraction: ($('input:radio[name=interactInput]:checked').val() != undefined) ? true : false
+  }
+  let userSettings = {
+    timerSettings: formInput,
+    notifSettings: notifFormInput
+  }
+  chrome.runtime.sendMessage(userSettings);
   if(formInput.domain != ""){
     $("#displayDomains").append("<li>" + formInput.domain + "</li>");
   }
-  document.getElementById("fiveMin").checked =false;
+  $("#title").val("");
+  $("#message").val("");
+  $("#eventTime").val("");
   $("#customMin").val("");
   $("#domain").val("");
   $("#displayDomains").val("");
@@ -36,7 +51,6 @@ $("#clearSettings").click(function(){
   }
   chrome.runtime.sendMessage(resetSettings);
 })
-
 
 $("#darkModeButton").click(function(){
   $("#holder").toggleClass("darkMode");
@@ -86,21 +100,7 @@ $("#silent").click(function(){
     $("#silent").toggleClass("off");
   }
 })
-$("#notificationSubmit").click(function(){
-  console.log("clicked")
-  const notifSettings = {
-    type:"basic",
-    title: ($("#title").val() === "") ? "Generic Title" : $("#title").val(),
-    message: ($("#message").val() === "") ? "The Time Is Now" : $("#message").val(),
-    eventTime: ($("#eventTime").val() === NaN) ? 5000 : $("#eventTime").val(),
-    silent: $('input:radio[name=silent]:checked').val(),
-    requireInteraction: $('input:radio[name=interactInput]:checked').val()
-  }
-  console.log(notifSettings)
-  $("#title").val("");
-  $("#message").val("");
-  $("#eventTime").val("");
-})
+
 
 // document.getElementById("modal").addEventListener("click", function() {
 //   console.log("submitted!")
