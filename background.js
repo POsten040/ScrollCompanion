@@ -93,10 +93,7 @@ let userNotification = {
   type: null,
   title: null,
   message: null, 
-  iconUrl: null,
   eventTime: null,
-  message: null,
-  priority: null,
   silent: null,
   requireInteraction: null,
 }

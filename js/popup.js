@@ -61,6 +61,43 @@ $("#onButton").click(function(){
     chrome.runtime.sendMessage({on:false})
   }
 })
+$("#interact").click(function(){
+  console.log("click")
+  if($("#interact").hasClass("off")){
+    console.log("switch")
+    $("#interact").toggleClass("off");
+    $("#interact").toggleClass("on");
+  } else if ($("#interact").hasClass("on")){
+    $("#interact").toggleClass("on");
+    $("#interact").toggleClass("off");
+  }
+})
+$("#silent").click(function(){
+  console.log("click")
+  if($("#silent").hasClass("off")){
+    console.log("switch")
+    $("#silent").toggleClass("off");
+    $("#silent").toggleClass("on");
+  } else if ($("#silent").hasClass("on")){
+    $("#silent").toggleClass("on");
+    $("#silent").toggleClass("off");
+  }
+})
+$("#notificationSubmit").click(function(){
+  console.log("clicked")
+  const notifSettings = {
+    type:"basic",
+    title: ($("#title").val() === "") ? "Generic Title" : $("#title").val(),
+    message: ($("#message").val() === "") ? "The Time Is Now" : $("#message").val(),
+    eventTime: ($("#eventTime").val() === NaN) ? 5000 : $("#eventTime").val(),
+    silent: $('input:radio[name=silent]:checked').val(),
+    requireInteraction: $('input:radio[name=interactInput]:checked').val()
+  }
+  console.log(notifSettings)
+  $("#title").val("");
+  $("#message").val("");
+  $("#eventTime").val("");
+})
 
 // document.getElementById("modal").addEventListener("click", function() {
 //   console.log("submitted!")

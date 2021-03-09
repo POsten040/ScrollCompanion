@@ -19,22 +19,21 @@ div.lightMode {
   color: black;
   background-color: #93b9bc;
 }
-/* div#holder{
-  background-size: cover;
-  border:5px lightseagreen;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-} */
 .on {
   background-color: rgb(17, 158, 139);
   color: rgb(161, 238, 161);
-  text-shadow: 1px 2px 10% greenyellow;
+  text-shadow: 1px 2px 10% rgb(65, 47, 82);
 }
 .off {
-  background-color: #302b33;
+  width: 15%;
+  background-color: #302b33ce;
   color: rgb(176, 245, 230);
   text-shadow: 1px 2px 5px #dca873;
+}
+div#settingsDisplay{
+  background-color: black;
+  color:wheat;
+  font-family: 'Press Start 2P', cursive;
 }
 ul#displayDomains {
   float: left;
@@ -51,43 +50,30 @@ span#displayDomainSpan{
 button#fiveMin {  
   background-color: indianred;
 }
-
 div#timeButtons {
   position: relative;
   display: flex;
 }
-
-button {
-  flex-shrink: 2;
+.btn {
   font-family: 'Jura';
   letter-spacing: 2px;
   width: 50%;
-  
 }
-
-button#fiveMin {
-  background:linear-gradient(#65699A, #65839A);
-}
-button#tenMin {
-  background:linear-gradient(#78639C, #636B9C)
-}
-button#fifteenMin {
-  background:linear-gradient(#9D6289, #94629D)
-}
-button#twentyMin {
-  background:linear-gradient(#A15E62 ,#A15E84 )
-}
-button#twentyfiveMin {
-  background:linear-gradient(#A3705C, #A35C6B)
-}
-button#thirtyMin {
-  background:linear-gradient(#A49D5B, #A4785B)
+div#tabButtonHolder{
+  word-wrap: unset;
+  width: 70%;
+  height: 10%;
 }
 .textInput {
   float: right;
   max-width: 80px;
   color: rgb(29, 29, 29);
   background-color: rgba(198, 194, 201, 0.479);
+}
+input#interactButton{
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 
