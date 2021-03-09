@@ -61,14 +61,14 @@ $("#onButton").click(function(){
     chrome.runtime.sendMessage({on:false})
   }
 })
-$("#interactButton").click(function(){
+$("#interact").click(function(){
   console.log("click")
   if($("#interact").hasClass("off")){
     console.log("switch")
-    $("#interact").toggleClass("off");
+    $("#interact").toggleClass("off").text("Yes");
     $("#interact").toggleClass("on");
   } else if ($("#interact").hasClass("on")){
-    $("#interact").toggleClass("on");
+    $("#interact").toggleClass("on").text("No");
     $("#interact").toggleClass("off");
   }
 })

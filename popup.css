@@ -64,16 +64,26 @@ div#tabButtonHolder{
   width: 70%;
   height: 10%;
 }
+input.notifRadio{
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+/* label#silent, #interact{
+  width: 40px;
+  height: 30px;
+  padding: 2px;
+  margin: 5px;
+  float: right;
+} */
+span.notifLabels{
+  float: left;
+}
 .textInput {
   float: right;
   max-width: 80px;
   color: rgb(29, 29, 29);
   background-color: rgba(198, 194, 201, 0.479);
-}
-input.notifRadio{
-  opacity: 0;
-  width: 0;
-  height: 0;
 }
 
 
