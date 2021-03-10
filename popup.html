@@ -116,9 +116,11 @@
               <br/>
             </container>
           </details>
-          <button id="formSubmit" class="btn on">Submit</button>
-          <br/>
-          <button id="clearSettings" class="btn">Clear Settings</button>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <button id="formSubmit" class="btn on">Submit</button>
+            <button id="clearSettings" class="btn btn-warning">Clear Settings</button>
+            <button id="saveTimer" class="btn on">Save Timer</button>
+          </div>
         </div>
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
@@ -133,9 +135,9 @@
   <container>
   
   <div id="settingsDisplay">
-    <ul>
-
-    </ul>
+    <button id="displayInfo" class='btn on'></button>
+    <span id="savedDomain"></span>
+    <span id="timerLength"></span>
   </div>
 
 <script src="jquery.js"></script>

@@ -1,4 +1,8 @@
 
+$("#saveTimer").click(function(){
+  console.log("clicked");
+  chrome.runtime.sendMessage({save: true});
+})
 $("#formSubmit").click(function(){
   let formInput = {
     minutes: parseInt(($('input:radio[name=minRadioButtons]:checked').val() != null ? $('input:radio[name=minRadioButtons]:checked').val() : $("#customMin").val())),

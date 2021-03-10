@@ -1,26 +1,49 @@
 let onOffState = {on: false} 
-console.log(onOffState)
 let alarmSet = false;
 let tabId = null;
 let notifSettings = {};
 let userInput = {};
+let savedSettings = null;
+LoadSettings();
+function SaveSettings(input){
+  chrome.storage.sync.set({stored: input}, function() {
+    const savedNotif = {
+      type: "basic",
+      iconUrl: 'images/pixel_waterfall_128.png',
+      title: 'Timer has been saved',
+      message: "friends don't let friends scroll alone",
+      eventTime: 2000
+    }
+    chrome.notifications.create(savedNotif);
+  });
+}
+function LoadSettings(){
+  chrome.storage.sync.get(["stored"], function(result) {
+    if(result.stored != undefined){
+      console.log(result.stored)
+      chrome.runtime.sendMessage(result.stored)
+    } else {
+      console.log("No Saved Data")
+    }
+  })
+}
 //Message comes from form button
 chrome.runtime.onMessage.addListener(onUserInput);
 function onUserInput(message){
-  console.log(message)
+  if(message.save === true && userInput != {}){
+    SaveSettings(message);
+  }
   if(message.on != undefined){
     onOffState = message;
-    console.log(onOffState)
-  } else if (message.timerSettings.domain != undefined) {
+  } else if (message.timerSettings != undefined) {
+    console.log(message);
     userInput = message.timerSettings;
-    console.log(userInput)
     if(userInput.minutes === null && userInput.customMin != null){
       userInput.minutes = userInput.customMin;
     } else if(userInput.minutes === null && userInput.customMin === null){
       userInput.minutes = 1;
     }
     notifSettings = message.notifSettings;
-    console.log(notifSettings)
   } 
 }
 chrome.tabs.onCreated.addListener(function() {
@@ -94,15 +117,3 @@ chrome.alarms.onAlarm.addListener(function( alarm ) {
   chrome.alarms.clear(alarm.name)
   alarmSet = false;
 })
-
-
-//SAVE PREFERENCES BETWEEN CHROME RESTART
-// To read:
-
-//     var myStoredValue = localStorage["TheKeyToMyStoredValue"];
-// // To write:
-
-//     localStorage["TheKeyToMyStoredValue"] = myNewValueToStore;
-// // To get rid of:
-
-//     delete localStorage["TheKeyToMyStoredValue"];
