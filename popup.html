@@ -20,23 +20,21 @@
         <div class="col-sm-4">
           <div>
             <label for="timerLength">Set Timer For:</label>
-            <div class="form-check">
               <div id="minuteButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn off active">
-                  <input value="5" name="minRadioButtons" type="radio" class="btn btn-secondary">5</input>
+                <label id="fiveMin" class="btn on">
+                  <input id="fiveMinInput" value="5" name="minRadioButtons" type="radio" class="radio">5</input>
                 </label>
-                <label class="btn off">
-                  <input value="10" id="tenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">10</input>
+                <label id="tenMin" class="btn off">
+                  <input id="tenMinInput" value="10" name="minRadioButtons" type="radio" class="radio">10</input>
                 </label>
-                <label class="btn off">
-                  <input value="15" id="fifteenMin" name="minRadioButtons" type="radio" class="btn btn-secondary">15</input>
+                <label id="fifteenMin" class="btn off">
+                  <input value="15" id="fifteenMinInput" name="minRadioButtons" type="radio" class="radio">15</input>
                 </label>
-                <label class="btn off">
-                  <input value="20" id="twentyMin" name="minRadioButtons" type="radio" class="btn btn-secondary">20</input>
+                <label id="twentyMin" class="btn off">
+                  <input value="20" id="twentyMinInput" name="minRadioButtons" type="radio" class="radio">20</input>
                 </label>
               </div>
               <br/>
-            </div>
           </div>
           <br />
           <label for="customMin">Custom Minutes</label>
@@ -98,7 +96,7 @@
                 </col-md>
                 <col-md>
                   <label id="interact" class="btn off">
-                    <input value="true" name="interact" type="radio" id="interactButton" class="notifRadio">No</input>
+                    <input value="true" name="interact" type="radio" id="interactButton" class="radio">No</input>
                   </label>
                 </col-md>
               </row>
@@ -109,7 +107,7 @@
                 </col-md>
                 <col-md>
                   <label id="silent" class="btn off">
-                    <input value="true" id="silentButton" name="silent" type="radio" class="notifRadio">No</input>
+                    <input value="true" id="silentButton" name="silent" type="radio" class="radio">No</input>
                   </label>
                 </col-md>
               </row>
@@ -135,11 +133,19 @@
   <container>
   
   <div id="settingsDisplay">
-    <button id="displayInfo" class='btn on'></button>
-    <span id="savedDomain"></span>
-    <span id="timerLength"></span>
+    <container>
+      <row>
+        <col-sm>
+        <ul id="savedDomain"></ul>
+        </col-sm>
+      </row>
+      <row>
+        <col-sm>
+          <ul id="timerLength"></ul>
+        </col-sm>
+      </row>
+    </container>
   </div>
-
 <script src="jquery.js"></script>
 <script src="js/popup.js"></script>
 </body>

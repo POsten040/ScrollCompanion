@@ -27,7 +27,8 @@ $("#formSubmit").click(function(){
   }
   chrome.runtime.sendMessage(userSettings);
   if(formInput.domain != ""){
-    $("#displayDomains").append("<li>" + formInput.domain + "</li>");
+    $("#savedDomain").html("<li>" + "Watching For: " + formInput.domain + "</li>");
+    $("#timerLength").html("<li>" +"Timer For: " + formInput.minutes + "</li>");
   }
   $("#title").val("");
   $("#message").val("");
@@ -44,6 +45,7 @@ $("#clearSettings").click(function(){
   $("#displayDomains").val("");
   $("#keywords").val("");
   $("#topDomain").val("");
+  $("marquee").text("")
   const resetSettings = {
     minutes: null,
     customMin: null,
@@ -80,9 +82,7 @@ $("#onButton").click(function(){
   }
 })
 $("#interact").click(function(){
-  console.log("click")
   if($("#interact").hasClass("off")){
-    console.log("switch")
     $("#interact").toggleClass("off").text("Yes");
     $("#interact").toggleClass("on");
   } else if ($("#interact").hasClass("on")){
@@ -94,15 +94,19 @@ $("#interact").click(function(){
 //   console.log("input")
 // })
 $("#silent").click(function(){
-  console.log("click")
   if($("#silent").hasClass("off")){
-    console.log("switch")
     $("#silent").toggleClass("off").text("Yes");
     $("#silent").toggleClass("on");
   } else if ($("#silent").hasClass("on")){
     $("#silent").toggleClass("on").text("No");
     $("#silent").toggleClass("off");
   }
+})
+$("#fiveMinInput").click(function(){
+  $("#tenMin").toggleClass("off on");
+  $("#fiveMin").toggleClass("off on");
+  $("#fifteenMin").toggleClass("off on");
+  $("#twentyMin").toggleClass("off on");
 })
 
 

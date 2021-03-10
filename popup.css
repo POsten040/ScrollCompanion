@@ -35,8 +35,9 @@ div#settingsDisplay{
   background-color: black;
   color:wheat;
   font-family: 'Press Start 2P', cursive;
+  font-size: small;
 }
-ul#displayDomains {
+ul#savedDomain {
   float: left;
   list-style: square;
   list-style-image:url(images/pixel_waterfall_16.png) ;
@@ -47,9 +48,6 @@ span#displayDomainSpan{
   flex-direction: column;
   max-width: 200px;
   max-height: 300px;
-}
-button#fiveMin {  
-  background-color: indianred;
 }
 div#timeButtons {
   position: relative;
@@ -65,7 +63,7 @@ div#tabButtonHolder{
   width: 70%;
   height: 10%;
 }
-input.notifRadio{
+input.radio{
   opacity: 0;
   width: 0;
   height: 0;
