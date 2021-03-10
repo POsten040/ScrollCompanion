@@ -14,6 +14,8 @@
   <div class="lightMode" id="holder">
     <div id="titleScreen" class="container">
       <h1 id="title">Scroll Companion</h1>
+    </div>
+    <div class="titleScreenButtons">
       <button class="off btn" id="onButton">Off</button>
       <button class="off btn" id="darkModeButton">Darkmode</button>
     </div>
@@ -62,10 +64,10 @@
                   <br/>
                   <span>What Kind of Tab Event Should I Watch For?</span>
                   <div id="tabButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
-                  <label class="btn off active">
+                  <label id="newTabLabel" class="btn off active">
                     <input value="onNewTab" id="onNewTabButton" name="watchMethodRadioButtons" type="radio" class="btn" autocomplete="off">Create</input>
                   </label>
-                  <label class="btn off">
+                  <label id="onChangeLabel" class="btn off">
                     <input value="onChangeTab" id="onChangeTabButton" name="watchMethodRadioButtons" type="radio" class="btn" autocomplete="off">Highlight</input>
                   </label>
                 </div>

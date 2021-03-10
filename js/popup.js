@@ -101,12 +101,65 @@ $("#silent").click(function(){
   }
 })
 $("#fiveMinInput").click(function(){
-  $("#tenMin").toggleClass("off on");
+  if($("#tenMin").hasClass("on")){
+    $("#tenMin").toggleClass("off on");
+  }
+  if($("#fifteenMin").hasClass("on")){
+    $("#fifteenMin").toggleClass("off on");
+  }
+  if($("#twentyMin").hasClass("on")){
+    $("#twentyMin").toggleClass("off on");
+  }
   $("#fiveMin").toggleClass("off on");
+})
+$("#tenMinInput").click(function(){
+  if($("#fiveMin").hasClass("on")){
+    $("#fiveMin").toggleClass("off on");
+  }
+  if($("#fifteenMin").hasClass("on")){
+    $("#fifteenMin").toggleClass("off on");
+  }
+  if($("#twentyMin").hasClass("on")){
+    $("#twentyMin").toggleClass("off on");
+  }
+  $("#tenMin").toggleClass("off on");
+})
+$("#fifteenMinInput").click(function(){
+  if($("#tenMin").hasClass("on")){
+    $("#tenMin").toggleClass("off on");
+  }
+  if($("#fiveMin").hasClass("on")){
+    $("#fiveMin").toggleClass("off on");
+  }
+  if($("#twentyMin").hasClass("on")){
+    $("#twentyMin").toggleClass("off on");
+  }
   $("#fifteenMin").toggleClass("off on");
+})
+$("#twentyMinInput").click(function(){
+  if($("#tenMin").hasClass("on")){
+    $("#tenMin").toggleClass("off on");
+  }
+  if($("#fifteenMin").hasClass("on")){
+    $("#fifteenMin").toggleClass("off on");
+  }
+  if($("#fiveMin").hasClass("on")){
+    $("#fiveMin").toggleClass("off on");
+  }
   $("#twentyMin").toggleClass("off on");
 })
-
+$("#onNewTabButton").click(function(){
+  if($("#onChangeLabel").hasClass("on")){
+    $("#onChangeLabel").toggleClass("off on");
+  }
+  $("#newTabLabel").toggleClass("off on");
+})
+$("#onChangeTabButton").click(function(){
+  if($("#newTabLabel").hasClass("on")){
+    $("#newTabLabel").toggleClass("off on");
+  }
+  $("#onChangeLabel").toggleClass("off on");
+})
 $("#timerSettingCollapse").click(function(){
   if($("#collapseTwo").hasClass("show")){
     $("#collapseTwo").toggleClass("show")
