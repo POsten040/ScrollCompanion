@@ -36,40 +36,45 @@
               <div class="col-sm-4">
                 <div>
                   <label for="timerLength">Set Timer For:</label>
-                    <div id="minuteButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
-                      <label id="fiveMin" class="btn on">
-                        <input id="fiveMinInput" value="5" name="minRadioButtons" type="radio" class="radio">5</input>
-                      </label>
-                      <label id="tenMin" class="btn off">
-                        <input id="tenMinInput" value="10" name="minRadioButtons" type="radio" class="radio">10</input>
-                      </label>
-                      <label id="fifteenMin" class="btn off">
-                        <input value="15" id="fifteenMinInput" name="minRadioButtons" type="radio" class="radio">15</input>
-                      </label>
-                      <label id="twentyMin" class="btn off">
-                        <input value="20" id="twentyMinInput" name="minRadioButtons" type="radio" class="radio">20</input>
-                      </label>
-                    </div>
-                    <br/>
+                  <div id="minuteButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label id="fiveMin" class="btn on">
+                      <input id="fiveMinInput" value="5" name="minRadioButtons" type="radio" class="radio">5</input>
+                    </label>
+                    <label id="tenMin" class="btn off">
+                      <input id="tenMinInput" value="10" name="minRadioButtons" type="radio" class="radio">10</input>
+                    </label>
+                    <label id="fifteenMin" class="btn off">
+                      <input value="15" id="fifteenMinInput" name="minRadioButtons" type="radio" class="radio">15</input>
+                    </label>
+                    <label id="twentyMin" class="btn off">
+                      <input value="20" id="twentyMinInput" name="minRadioButtons" type="radio" class="radio">20</input>
+                    </label>
                   </div>
-                  <br />
-                  <label for="customMin">Custom Minutes</label>
-                  <input id="customMin" type="number" class="textInput"/>
                   <br/>
-                  <label for="domain">Domain To Watch</label>
-                  <input class="textInput" type="text" name="domain" id="domain" required>
-                  <br/>
-                  <label for="keywords">URL Keywords</label>
-                  <input class="textInput" type="text" name="keywords" id="keywords">
-                  <br/>
-                  <span>What Kind of Tab Event Should I Watch For?</span>
-                  <div id="tabButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
+                </div>
+                <br />
+                <label for="customMin">Custom Minutes</label>
+                <input id="customMin" type="number" class="textInput"/>
+                <br/>
+                <label for="domain">Domain To Watch</label>
+                <input class="textInput" type="text" name="domain" id="domain" required>
+                <br/>
+                <label for="keywords">URL Keywords</label>
+                <input class="textInput" type="text" name="keywords" id="keywords">
+                <br/>
+                <span>What Kind of Tab Event Should I Watch For?</span>
+                <div id="tabButtonHolder" class="btn-group btn-group-toggle">
                   <label id="newTabLabel" class="btn off active">
                     <input value="onNewTab" id="onNewTabButton" name="watchMethodRadioButtons" type="radio" class="btn" autocomplete="off">Create</input>
                   </label>
                   <label id="onChangeLabel" class="btn off">
                     <input value="onChangeTab" id="onChangeTabButton" name="watchMethodRadioButtons" type="radio" class="btn" autocomplete="off">Highlight</input>
                   </label>
+                </div>
+                <br/>
+                <div class="btn-group btn-group-toggle formButtons">
+                  <button class="btn on formSubmit">Submit</button>
+                  <button id="clearSettings" class="btn off">Clear</button>
                 </div>
               </div>
             </div>
@@ -142,7 +147,11 @@
                 </label>
               </col-md>
             </row>
-          <br/>
+            <br/>
+            <div class="btn-group btn-group-toggle formButtons">
+              <button class="btn on formSubmit">Submit</button>
+              <button id="clearSettings" class="btn off">Clear</button>
+            </div>
           </div>
         </div>
       </div>
@@ -169,6 +178,7 @@
                   <ul id="timerLength"></ul>
                 </col-sm>
               </row>
+              <br/>
             </container>
           </div>
         </div>

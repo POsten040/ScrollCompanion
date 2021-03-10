@@ -3,7 +3,7 @@
 //   console.log("clicked");
 //   chrome.runtime.sendMessage({save: true});
 // })
-$("#formSubmit").click(function(){
+$("button.formSubmit").click(function(){
   let formInput = {
     minutes: parseInt(($('input:radio[name=minRadioButtons]:checked').val() != null ? $('input:radio[name=minRadioButtons]:checked').val() : $("#customMin").val())),
     customMin: parseInt(($("#customMin").val() != null) ? $("#customMin").val() : 1),
@@ -30,22 +30,11 @@ $("#formSubmit").click(function(){
     $("#savedDomain").html("<li>" + "Watching For: " + formInput.domain + "</li>");
     $("#timerLength").html("<li>" +"Timer For: " + formInput.minutes + "</li>");
   }
-  $("#title").val("");
-  $("#message").val("");
-  $("#eventTime").val("");
-  $("#customMin").val("");
-  $("#domain").val("");
-  $("#displayDomains").val("");
-  $("#keywords").val("");
-  $("#topDomain").val("");
+  $("input").val("");
 })
 
 $("#clearSettings").click(function(){
-  $("#domain").val("");
-  $("#displayDomains").val("");
-  $("#keywords").val("");
-  $("#topDomain").val("");
-  $("marquee").text("")
+  $("input").val("");
   const resetSettings = {
     minutes: null,
     customMin: null,

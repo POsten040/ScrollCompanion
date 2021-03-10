@@ -73,9 +73,16 @@ span#displayDomainSpan{
   max-width: 200px;
   max-height: 300px;
 }
+button#clearSettings{
+  background-color: #8f6e53;
+}
 div#timeButtons {
   position: relative;
   display: flex;
+}
+div.formButtons{
+  margin-top: 13px;
+  width: 100%;
 }
 .btn {
   font-family: 'Jura';

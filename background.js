@@ -3,7 +3,7 @@ let alarmSet = false;
 let tabId = null;
 let notifSettings = {};
 let userInput = {};
-let savedSettings = null;
+// let savedSettings = null;
 LoadSettings();
 function SaveSettings(input){
   chrome.storage.sync.set({stored: input}, function() {
@@ -12,7 +12,8 @@ function SaveSettings(input){
       iconUrl: 'images/pixel_waterfall_128.png',
       title: 'Timer has been saved',
       message: "friends don't let friends scroll alone",
-      eventTime: 2000
+      eventTime: 2000,
+      silent: true
     }
     chrome.notifications.create(savedNotif);
   });
@@ -30,6 +31,7 @@ function LoadSettings(){
 //Message comes from form button
 chrome.runtime.onMessage.addListener(onUserInput);
 function onUserInput(message){
+  console.log(message)
   // if(message.save === true && userInput != {}){
     
   // }
@@ -80,9 +82,11 @@ chrome.tabs.onCreated.addListener(function() {
 });
 
 chrome.tabs.onHighlighted.addListener(function() {
+  console.log("highlighted")
+  console.log(userInput)
   if(userInput.watchMethod === "onChangeTab" && onOffState.on === true){
     if(alarmSet){
-      console.log("caught line 65")
+      console.log("alarm already exists, shutting down now.")
     } else {
       chrome.tabs.query({active: true, currentWindow: true}, tabs => {
         console.log(userInput)
@@ -102,6 +106,7 @@ chrome.tabs.onHighlighted.addListener(function() {
             console.log("timer created");
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
             alarmSet = true;
+            
           }
         } else {
           console.log("No Alarm Parameters Present")
