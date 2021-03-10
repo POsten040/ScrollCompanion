@@ -50,7 +50,7 @@ function onUserInput(message){
 chrome.tabs.onCreated.addListener(function() {
   if(userInput.watchMethod === "onNewTab" && onOffState.on === true){
     if(alarmSet){
-      console.log("caught at 29")
+      console.log("alarm already exists, shutting down now.")
     } else {
       console.log("watch on new tab")
       chrome.tabs.query({active: false, currentWindow: true}, tabs => {

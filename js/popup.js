@@ -72,12 +72,10 @@ $("#darkModeButton").click(function(){
 
 $("#onButton").click(function(){
   if($("#onButton").hasClass("off")){
-    $("#onButton").toggleClass("off").text("On");
-    $("#onButton").toggleClass("on");
+    $("#onButton").toggleClass("off on").text("On");
     chrome.runtime.sendMessage({on:true});
   } else {
-    $("#onButton").toggleClass("on").text("Off");
-    $("#onButton").toggleClass("off");
+    $("#onButton").toggleClass("on off").text("Off");
     chrome.runtime.sendMessage({on:false})
   }
 })
@@ -108,6 +106,35 @@ $("#fiveMinInput").click(function(){
   $("#fifteenMin").toggleClass("off on");
   $("#twentyMin").toggleClass("off on");
 })
+
+$("#timerSettingCollapse").click(function(){
+  if($("#collapseTwo").hasClass("show")){
+    $("#collapseTwo").toggleClass("show")
+  }
+  if(($("#collapseThree").hasClass("show"))){
+    $("#collapseThree").toggleClass("show")
+  }
+  $("#collapseOne").toggleClass("show");
+});
+
+$("#notifSettingCollapse").click(function(){
+  if($("#collapseOne").hasClass("show")){
+    $("#collapseOne").toggleClass("show")
+  }
+  if(($("#collapseThree").hasClass("show"))){
+    $("#collapseThree").toggleClass("show")
+  }
+  $("#collapseTwo").toggleClass("show");
+});
+$("#currentTimerCollapse").click(function(){
+  if($("#collapseOne").hasClass("show")){
+    $("#collapseOne").toggleClass("show")
+  }
+  if(($("#collapseTwo").hasClass("show"))){
+    $("#collapseTwo").toggleClass("show")
+  }
+  $("#collapseThree").toggleClass("show");
+});
 
 
 // document.getElementById("modal").addEventListener("click", function() {

@@ -12,139 +12,166 @@
 <body id="body" >
   <!-- <img src="./images/waterfall_1080.gif" id="waterfallImg"> -->
   <div class="lightMode" id="holder">
-    <div class="container">
-      <h1 id="h1">Scroll Companion</h1>
+    <div id="titleScreen" class="container">
+      <h1 id="title">Scroll Companion</h1>
       <button class="off btn" id="onButton">Off</button>
       <button class="off btn" id="darkModeButton">Darkmode</button>
-      <div class="row">
-        <div class="col-sm-4">
-          <div>
-            <label for="timerLength">Set Timer For:</label>
-              <div id="minuteButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label id="fiveMin" class="btn on">
-                  <input id="fiveMinInput" value="5" name="minRadioButtons" type="radio" class="radio">5</input>
-                </label>
-                <label id="tenMin" class="btn off">
-                  <input id="tenMinInput" value="10" name="minRadioButtons" type="radio" class="radio">10</input>
-                </label>
-                <label id="fifteenMin" class="btn off">
-                  <input value="15" id="fifteenMinInput" name="minRadioButtons" type="radio" class="radio">15</input>
-                </label>
-                <label id="twentyMin" class="btn off">
-                  <input value="20" id="twentyMinInput" name="minRadioButtons" type="radio" class="radio">20</input>
-                </label>
+    </div>
+  </div>
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button id="timerSettingCollapse" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Timer Settings
+          </button>
+        </h5>
+      </div>
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                <div>
+                  <label for="timerLength">Set Timer For:</label>
+                    <div id="minuteButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
+                      <label id="fiveMin" class="btn on">
+                        <input id="fiveMinInput" value="5" name="minRadioButtons" type="radio" class="radio">5</input>
+                      </label>
+                      <label id="tenMin" class="btn off">
+                        <input id="tenMinInput" value="10" name="minRadioButtons" type="radio" class="radio">10</input>
+                      </label>
+                      <label id="fifteenMin" class="btn off">
+                        <input value="15" id="fifteenMinInput" name="minRadioButtons" type="radio" class="radio">15</input>
+                      </label>
+                      <label id="twentyMin" class="btn off">
+                        <input value="20" id="twentyMinInput" name="minRadioButtons" type="radio" class="radio">20</input>
+                      </label>
+                    </div>
+                    <br/>
+                  </div>
+                  <br />
+                  <label for="customMin">Custom Minutes</label>
+                  <input id="customMin" type="number" class="textInput"/>
+                  <br/>
+                  <label for="domain">Domain To Watch</label>
+                  <input class="textInput" type="text" name="domain" id="domain" required>
+                  <br/>
+                  <label for="keywords">URL Keywords</label>
+                  <input class="textInput" type="text" name="keywords" id="keywords">
+                  <br/>
+                  <span>What Kind of Tab Event Should I Watch For?</span>
+                  <div id="tabButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn off active">
+                    <input value="onNewTab" id="onNewTabButton" name="watchMethodRadioButtons" type="radio" class="btn" autocomplete="off">Create</input>
+                  </label>
+                  <label class="btn off">
+                    <input value="onChangeTab" id="onChangeTabButton" name="watchMethodRadioButtons" type="radio" class="btn" autocomplete="off">Highlight</input>
+                  </label>
+                </div>
               </div>
-              <br/>
+            </div>
           </div>
-          <br />
-          <label for="customMin">Custom Minutes</label>
-          <input id="customMin" type="number" class="textInput"/>
-          <br/>
-          <label for="domain">Domain To Watch</label>
-          <input class="textInput" type="text" name="domain" id="domain" required>
-          <br/>
-          <label for="keywords">URL Keywords</label>
-          <input class="textInput" type="text" name="keywords" id="keywords">
-          <br/>
-          <span>What Kind of Tab Event Should I Watch For?</span>
-          <div id="tabButtonHolder" class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn off active">
-              <input value="onNewTab" id="onNewTabButton" name="watchMethodRadioButtons" type="radio" class="btn" autocomplete="off">Create</input>
-            </label>
-            <label class="btn off">
-              <input value="onChangeTab" id="onChangeTabButton" name="watchMethodRadioButtons" type="radio" class="btn" autocomplete="off">Highlight</input>
-            </label>
-          </div>
-          <details>
-            <summary> Notification Settings:</summary>
-              <row>
-                <col-md>
-                  <span class="notifLabels">Title:</span>
-                </col-md>
-                <col-md>
-                  <label class="notifTextInput" for="title">
-                  <input type="text" id="title" class="textInput">
-                </col-md>
-              </label>
-              </row>
-              <br/>
-              <row>
-                <col-md>
-                  <span class="notifLabels">Message:</span>
-                </col-md>
-                <col-md>
-                  <label class="notifTextInput" for="message">
-                    <input type="text" id="message" class="textInput">
-                  </label>
-                </col-md>
-              </row>
-              <br/>
-              <row>
-                <col-md>
-                  <span class="notifLabels">Event Time:</span>
-                </col-md>
-                <col-md>
-                  <label class="notifTextInput" for="eventTime">
-                    <input type="number" id="eventTime" class="textInput">
-                  </label>
-                </col-md>
-              </row>
-              <br/>
-              <row>
-                <col-md>
-                  <span class="notifLabels">Require Interaction:</span>
-                </col-md>
-                <col-md>
-                  <label id="interact" class="btn off">
-                    <input value="true" name="interact" type="radio" id="interactButton" class="radio">No</input>
-                  </label>
-                </col-md>
-              </row>
-              <br/>
-              <row>
-                <col-md>
-                  <span class="notifLabels">Silent:</span>
-                </col-md>
-                <col-md>
-                  <label id="silent" class="btn off">
-                    <input value="true" id="silentButton" name="silent" type="radio" class="radio">No</input>
-                  </label>
-                </col-md>
-              </row>
-              <br/>
-            </container>
-          </details>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <button id="formSubmit" class="btn on">Submit</button>
-            <button id="clearSettings" class="btn btn-warning">Clear Settings</button>
-            <!-- <button id="saveTimer" class="btn on">Save Timer</button> -->
-          </div>
-        </div>
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-          <span id="displayDomainSpan">
-            <ul id="displayDomains">
-            </ul>
-          </span>
         </div>
       </div>
     </div>
-  </div>
-  <container>
-  
-  <div id="settingsDisplay">
-    <container>
-      <row>
-        <col-sm>
-        <ul id="savedDomain"></ul>
-        </col-sm>
-      </row>
-      <row>
-        <col-sm>
-          <ul id="timerLength"></ul>
-        </col-sm>
-      </row>
-    </container>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button id="notifSettingCollapse" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Notification Settings
+          </button>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <div class="container">
+            <row>
+              <col-md>
+                <span class="notifLabels">Title:</span>
+              </col-md>
+              <col-md>
+                <label class="notifTextInput" for="title">
+                <input type="text" id="title" class="textInput">
+              </col-md>
+            </label>
+            </row>
+            <br/>
+            <row>
+              <col-md>
+                <span class="notifLabels">Message:</span>
+              </col-md>
+              <col-md>
+                <label class="notifTextInput" for="message">
+                  <input type="text" id="message" class="textInput">
+                </label>
+              </col-md>
+            </row>
+            <br/>
+            <row>
+              <col-md>
+                <span class="notifLabels">Event Time:</span>
+              </col-md>
+              <col-md>
+                <label class="notifTextInput" for="eventTime">
+                  <input type="number" id="eventTime" class="textInput">
+                </label>
+              </col-md>
+            </row>
+            <br/>
+            <row>
+              <col-md>
+                <span class="notifLabels">Require Interaction:</span>
+              </col-md>
+              <col-md>
+                <label id="interact" class="btn off">
+                  <input value="true" name="interact" type="radio" id="interactButton" class="radio">No</input>
+                </label>
+              </col-md>
+            </row>
+            <br/>
+            <row>
+              <col-md>
+                <span class="notifLabels">Silent:</span>
+              </col-md>
+              <col-md>
+                <label id="silent" class="btn off">
+                  <input value="true" id="silentButton" name="silent" type="radio" class="radio">No</input>
+                </label>
+              </col-md>
+            </row>
+          <br/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+          <button id="currentTimerCollapse" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Current Timer
+          </button>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        <div class="card-body">
+          <div id="settingsDisplay">
+            <container>
+              <row>
+                <col-sm>
+                <ul id="savedDomain"></ul>
+                </col-sm>
+              </row>
+              <row>
+                <col-sm>
+                  <ul id="timerLength"></ul>
+                </col-sm>
+              </row>
+            </container>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <script src="jquery.js"></script>
 <script src="js/popup.js"></script>
