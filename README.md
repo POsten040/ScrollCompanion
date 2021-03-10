@@ -64,9 +64,55 @@ chrome.tabs.onCreated.addListener(function() {
 2. User input contains a prop of watchMethod, which determines the api.
 3. A global variable alarmSet checks is an arlam is running, and logs "alarm already exists, shutting down now." to the background page.
 4. The Query api gets an array of all active tabs form the current window.
-5. The array is mutated like this.
+5. The array is mutated to separate out domains and keywords.
 6. It then checks for keywords and domains.
 7. If a match is found an alarm is created.
+
+**Messages**
+
+1. An object (message) is passed on clicking the submit button, it captures all available inputs from Timer Settings, Notification Settings, and local storage. If the user selects nothing default settings are applied.
+
+<details>
+<summary>Default Settings</summary>
+
+```
+formInput{
+	minutes: minuteButton ? minuteButton : customMin,
+	customMin: customMin ? customMin : 5 || user,
+	domain: domain ? domain : <all_urls>,
+	keywords: keywords ? keywords : "",
+	watchMethod: watchMethodButton ? watchMedthodButton : "onNewTab"
+}
+```
+```
+notificationFormInput{
+	iconUrl: scrollcompanion.icon,
+	title: title ? title : "Generic Title",
+	message: message ? message : "The Time Is Now",
+	eventTime: eventTime(milliseconds) ? eventTime : 5000,
+	silent: silent(bool) ? true : false,
+	requireInteraction(bool) ? true : false
+}
+```
+</details>
+
+2. The onMessage listener in background.js receives the message form popup.js and then does this series of checks:
+	- message.on != undefined 
+		- for turning the app on or off.
+	- message.timerSettings != undefined
+		- it will save the settings in local storage from timerSettings each time a timer is submitted
+	- (timerSettings.minutes === null && timerSettings.cutomMin != null)
+		- setting .minutes to equal .customMin if no minutes are selected
+	- if Both .minutes and .customMin are null .minutes is set to 5min
+
+3. The chrome.alarms.onAlarm listener registers the alarm ending, creates a notification and clears all alarms resetting alarmSet to false.
+```
+chrome.alarms.onAlarm.addListener(function( alarm ) {
+  chrome.notifications.create('', notifSettings)
+  chrome.alarms.clear(alarm.name)
+  alarmSet = false;
+})
+```
 **APIs**
 
 **Bugs**
