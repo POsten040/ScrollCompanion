@@ -5,11 +5,11 @@ Coded by: Patrick Osten
 
 **image**
 
--images forthcoming-
+![](images/SC_capture.gif)
 
 <h2>Project Description</h2>
-
-The project is a chrome extension to help users spend time effectively when browsing the internet, by setting a timer for specific websites that prompts users to reflect on how long they've browsed, and what the goal of that browsing is. 
+Have you ever been browsing the internet and decided to close the tab and get to that important work you need to get done, only to open an identical social media tab without realizing you decided to keep browsing? Habits can be hard to break, and recognize. This tool allows users to give Scroll Companion the hard job of noticing how much time you've spent browsing, and remind you to take breaks. 
+Scroll Compainon works by listening for specific domains or keywords in the url and setting a timer if a match is found.
 
 ### Planned Additional features:
 - options for customizing the notifications time duration, theme, buttons, and text

@@ -50,12 +50,14 @@ function onUserInput(message){
   } 
 }
 chrome.tabs.onCreated.addListener(function() {
-  console.log("newTab");
+  console.log(onOffState);
   if(userInput.watchMethod === "onNewTab" && onOffState.on === true){
     if(alarmSet == true){
       console.log("Hold it citizen, an alarm already exists")
-    } else {
-      console.log("watch on new tab")
+    } else if (userInput.domain === "<all_urls>"){
+      chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
+      alarmSet = true;
+    } else if (userInput != {}){
       chrome.tabs.query({active: false, currentWindow: true}, tabs => {
         tabId = tabs[tabs.length-1].id;
         let url = tabs[tabs.length-1].pendingUrl;
@@ -71,7 +73,6 @@ chrome.tabs.onCreated.addListener(function() {
           }
         } else if (userInput.domain != ""){ 
           if(matchingDomain.includes(userInput.domain)){
-            console.log("timer created");
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
             alarmSet = true;
             console.log("alarm set")
@@ -80,16 +81,17 @@ chrome.tabs.onCreated.addListener(function() {
           console.log("No Alarm Parameters Present")
         }
       })
+    } else {
+      console.log("alarm already set")
     }
   }
 });
 
 chrome.tabs.onHighlighted.addListener(function() {
-  console.log("highlighted");
   if(userInput.watchMethod === "onChangeTab" && onOffState.on === true){
     if(alarmSet == true){
       console.log("Hold it citizen, an alarm already exists")
-    } else {
+    } else if(userInput != {}){
       chrome.tabs.query({active: true, currentWindow: true}, tabs => {
         console.log(userInput)
         tabId = tabs[0].id;
@@ -104,7 +106,9 @@ chrome.tabs.onHighlighted.addListener(function() {
             alarmSet = true;
             console.log("alarm set")
           }
-        } else if (userInput.domain != ""){ 
+        } else if(userInput.domain === "<all_urls>") {
+          console.log("alaaaaaarms")
+        }else if (userInput.domain != ""){ 
           if(matchingDomain.includes(userInput.domain)){
             console.log("timer created");
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
