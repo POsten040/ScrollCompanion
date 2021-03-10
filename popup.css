@@ -153,8 +153,8 @@ input.radio{
   margin: 5px;
   float: right;
 } */
-span.notifLabels{
-  float: left;
+label.notifBtn{
+  float: right;
 }
 .textInput {
   float: right;

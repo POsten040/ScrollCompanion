@@ -99,64 +99,32 @@
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
         <div class="card-body">
           <div class="container">
-            <row>
-              <col-md>
-                <span class="notifLabels">Title:</span>
-              </col-md>
-              <col-md>
-                <label class="notifTextInput" for="title">
-                <input type="text" id="title" class="textInput">
-              </col-md>
-            </label>
-            </row>
-            <br/>
-            <row>
-              <col-md>
-                <span class="notifLabels">Message:</span>
-              </col-md>
-              <col-md>
-                <label class="notifTextInput" for="message">
-                  <input type="text" id="message" class="textInput">
-                </label>
-              </col-md>
-            </row>
-            <br/>
-            <row>
-              <col-md>
-                <span class="notifLabels">Event Time:</span>
-              </col-md>
-              <col-md>
-                <label class="notifTextInput" for="eventTime">
-                  <input type="number" id="eventTime" class="textInput">
-                </label>
-              </col-md>
-            </row>
-            <br/>
-            <row>
-              <col-md>
+            <div class="row">
+              <div class="col-sm-4">
+                <label for="title" class="notifLabels">Title:</label>
+                <input type="text" id="title" class="textInput"/>
+                <br/>
+                <label class="notifLabels for="message">Message:</label>
+                <input type="text" id="message" class="textInput"/>
+                <br/>
+                <label for="eventTime" class="notifLabels">Event Time:</label>
+                <input type="number" id="eventTime" class="textInput"/>
+                <br/>
                 <span class="notifLabels">Require Interaction:</span>
-              </col-md>
-              <col-md>
-                <label id="interact" class="btn off">
+                <label id="interact" class="btn off notifBtn">
                   <input value="true" name="interact" type="radio" id="interactButton" class="radio">No</input>
                 </label>
-              </col-md>
-            </row>
-            <br/>
-            <row>
-              <col-md>
+                <br/>
                 <span class="notifLabels">Silent:</span>
-              </col-md>
-              <col-md>
-                <label id="silent" class="btn off">
+                <label id="silent" class="btn off notifBtn">
                   <input value="true" id="silentButton" name="silent" type="radio" class="radio">No</input>
                 </label>
-              </col-md>
-            </row>
-            <br/>
-            <div class="btn-group btn-group-toggle formButtons">
-              <button class="btn on formSubmit">Submit</button>
-              <button id="clearSettings" class="btn off">Clear</button>
+                <br/>
+                <div class="btn-group btn-group-toggle formButtons">
+                  <button class="btn on formSubmit">Submit</button>
+                  <button id="clearSettings" class="btn off">Clear</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
