@@ -67,6 +67,7 @@ chrome.tabs.onCreated.addListener(function() {
       alarmSet = true;
     } else if (userInput != {}){
       chrome.tabs.query({active: false, currentWindow: true}, tabs => {
+        console.log(tabs)
         tabId = tabs[tabs.length-1].id;
         let url = tabs[tabs.length-1].pendingUrl;
         let urlArr = url.split('/');

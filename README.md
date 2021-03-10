@@ -12,13 +12,32 @@ Have you ever been browsing the internet and decided to close the tab and get to
 Scroll Compainon works by listening for specific domains or keywords in the url and setting a timer if a match is found.
 
 ### Planned Additional features:
-- options for customizing the notifications time duration, theme, buttons, and text
 - link to external websites when the timer finishes
 - 'ScrollComPAINion' where the windows is automatically closed when the timer finishes
 - snapshot of active tab/content when the timer finishes
 - better url parsing
 
 <h3>Use</h3>
+
+**Tab Query Method**
+
+1. The on Created method:
+ - fires when a new tab in created
+ - chrome.tabs.query then returns an array of tabs that are:
+ ```
+ active: false,
+ currentWindow: true
+ ```
+ - The code grabs the **pendingUrl** of the last tab created, since the url prop is not established at the moment the listener is triggered. 
+
+2. On Highlighted method:
+  - Fired when the highlighted or selected tabs in a window changes.
+  - The only difference from onCreated is that chomre.tabs.query checks for tabs that are:
+   ```
+ active: true,
+ currentWindow: true
+ ```
+  - the code then grabs the **url** prop of the active tab.
 
 **URL parsing**
 <details>
@@ -65,12 +84,13 @@ chrome.tabs.onCreated.addListener(function() {
 3. A global variable alarmSet checks is an arlam is running, and logs "Hold it citizen, an alarm already exists" to the background page.
 4. The Query api gets an array of all active tabs form the current window.
 5. The array is mutated to separate out domains and keywords.
-6. It then checks for keywords and domains.
+6. It then checks the user specified domain and keyword against the tab domains and keywords.
 7. If a match is found an alarm is created.
 
 **Messages**
 
 1. An object (message) is passed on clicking the submit button, it captures all available inputs from Timer Settings, Notification Settings, and local storage. If the user selects nothing default settings are applied.
+    - setting a new timer will override any saved timer settings with the new one.
 
 <details>
 <summary>Default Settings</summary>
@@ -134,6 +154,7 @@ chrome.alarms.onAlarm.addListener(function( alarm ) {
 - Javascript ES6
 - HTML5
 - CSS
+- JQuery
 
 
 
