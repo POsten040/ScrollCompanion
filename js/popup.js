@@ -1,4 +1,16 @@
-
+function LoadSettings(){
+  chrome.storage.sync.get(["stored"], function(result) {
+    if(result.stored != undefined){
+      console.log(result.stored)
+      chrome.runtime.sendMessage(result.stored)
+    } else {
+      console.log("No Saved Data")
+    }
+  })
+}
+$("#loadButton").click(function(){
+  LoadSettings();
+})
 // $("#saveTimer").click(function(){
 //   console.log("clicked");
 //   chrome.runtime.sendMessage({save: true});
@@ -9,8 +21,7 @@ $("button.formSubmit").click(function(){
     customMin: parseInt(($("#customMin").val() != null) ? $("#customMin").val() : 1),
     domain: ($("#domain").val() != "") ? $("#domain").val() : "<all_urls>",
     keywords: ($("#keywords").val() != "") ? $("#keywords").val() : "",
-    // topDomain: $("#topDomain").val(),
-    watchMethod: ($("input:radio[name=watchMethodRadioButtons]:checked").val() != undefined) ? $("input:radio[name=watchMethodRadioButtons]:checked").val() : "onNewTab",
+    watchMethod: ($("input:radio[name=watchMethodRadioButtons]:checked").val() != undefined) ? $("input:radio[name=watchMethodRadioButtons]:checked").val() : "onNewTab"
   }
   let notifFormInput = {
     iconUrl: "images/pixel_waterfall_128.png",
@@ -25,6 +36,7 @@ $("button.formSubmit").click(function(){
     timerSettings: formInput,
     notifSettings: notifFormInput
   }
+  console.log("yo")
   chrome.runtime.sendMessage(userSettings);
   if(formInput.domain != ""){
     $("#savedDomain").html("<li>" + "Watching For: " + formInput.domain + "</li>");

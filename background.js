@@ -4,7 +4,7 @@ let tabId = null;
 let notifSettings = {};
 let userInput = {};
 // let savedSettings = null;
-LoadSettings();
+
 function SaveSettings(input){
   chrome.storage.sync.set({stored: input}, function() {
     const savedNotif = {
@@ -18,26 +18,26 @@ function SaveSettings(input){
     chrome.notifications.create(savedNotif);
   });
 }
-function LoadSettings(){
-  chrome.storage.sync.get(["stored"], function(result) {
-    if(result.stored != undefined){
-      console.log(result.stored)
-      chrome.runtime.sendMessage(result.stored)
-    } else {
-      console.log("No Saved Data")
-    }
-  })
-}
+// function LoadSettings(){
+//   chrome.storage.sync.get(["stored"], function(result) {
+//     if(result.stored != undefined){
+//       console.log(result.stored)
+//       chrome.runtime.sendMessage(result.stored)
+//     } else {
+//       console.log("No Saved Data")
+//     }
+//   })
+// }
 //Message comes from form button
 chrome.runtime.onMessage.addListener(onUserInput);
 function onUserInput(message){
-  console.log(message)
   // if(message.save === true && userInput != {}){
     
   // }
   if(message.on != undefined){
     onOffState = message;
   } else if (message.timerSettings != undefined) {
+    console.log("saved");
     console.log(message);
     SaveSettings(message);
     userInput = message.timerSettings;
@@ -50,9 +50,10 @@ function onUserInput(message){
   } 
 }
 chrome.tabs.onCreated.addListener(function() {
+  console.log("newTab");
   if(userInput.watchMethod === "onNewTab" && onOffState.on === true){
-    if(alarmSet){
-      console.log("alarm already exists, shutting down now.")
+    if(alarmSet == true){
+      console.log("Hold it citizen, an alarm already exists")
     } else {
       console.log("watch on new tab")
       chrome.tabs.query({active: false, currentWindow: true}, tabs => {
@@ -66,12 +67,14 @@ chrome.tabs.onCreated.addListener(function() {
           if(matchingKeyword.includes(userInput.keywords) && matchingDomain.includes(userInput.domain)){
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
             alarmSet = true;
+            console.log("alarm set")
           }
         } else if (userInput.domain != ""){ 
           if(matchingDomain.includes(userInput.domain)){
             console.log("timer created");
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
             alarmSet = true;
+            console.log("alarm set")
           }
         } else {
           console.log("No Alarm Parameters Present")
@@ -82,11 +85,10 @@ chrome.tabs.onCreated.addListener(function() {
 });
 
 chrome.tabs.onHighlighted.addListener(function() {
-  console.log("highlighted")
-  console.log(userInput)
+  console.log("highlighted");
   if(userInput.watchMethod === "onChangeTab" && onOffState.on === true){
-    if(alarmSet){
-      console.log("alarm already exists, shutting down now.")
+    if(alarmSet == true){
+      console.log("Hold it citizen, an alarm already exists")
     } else {
       chrome.tabs.query({active: true, currentWindow: true}, tabs => {
         console.log(userInput)
@@ -100,13 +102,14 @@ chrome.tabs.onHighlighted.addListener(function() {
           if(matchingKeyword.includes(userInput.keywords) && matchingDomain.includes(userInput.domain)){
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
             alarmSet = true;
+            console.log("alarm set")
           }
         } else if (userInput.domain != ""){ 
           if(matchingDomain.includes(userInput.domain)){
             console.log("timer created");
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
             alarmSet = true;
-            
+            console.log("alarm set")
           }
         } else {
           console.log("No Alarm Parameters Present")

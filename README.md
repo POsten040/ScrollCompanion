@@ -62,7 +62,7 @@ chrome.tabs.onCreated.addListener(function() {
 
 1. A listener is attached to the onCreated or onHighlighted api, both instances run identically from there. 
 2. User input contains a prop of watchMethod, which determines the api.
-3. A global variable alarmSet checks is an arlam is running, and logs "alarm already exists, shutting down now." to the background page.
+3. A global variable alarmSet checks is an arlam is running, and logs "Hold it citizen, an alarm already exists" to the background page.
 4. The Query api gets an array of all active tabs form the current window.
 5. The array is mutated to separate out domains and keywords.
 6. It then checks for keywords and domains.
