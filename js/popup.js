@@ -2,12 +2,25 @@ function LoadSettings(){
   chrome.storage.sync.get(["stored"], function(result) {
     if(result.stored != undefined){
       console.log(result.stored)
-      chrome.runtime.sendMessage(result.stored)
+      let message = {
+        type: "load",
+        result: result.stored
+      }
+      chrome.runtime.sendMessage(message)
     } else {
-      console.log("No Saved Data")
+      $("#errorPopup").toggleClass("show");
+      chrome.alarms.create("loadPopup", {delayInMinutes: 1})
+      // $("#errorPopup").toggleClass("show")
     }
   })
 }
+chrome.alarms.onAlarm.addListener(function( alarm ) {
+  console.log("load alarm")
+  if(alarm.name === "loadPopup"){
+    $("#errorPopup").toggleClass("show")
+  }
+})
+
 $("#loadButton").click(function(){
   LoadSettings();
 })
@@ -32,12 +45,14 @@ $("button.formSubmit").click(function(){
     silent: ($('input:radio[name=silent]:checked').val() != undefined) ? true : false,
     requireInteraction: ($('input:radio[name=interactInput]:checked').val() != undefined) ? true : false
   }
-  let userSettings = {
+  let newTimerMessage = {
+    type: "new",
+    result: {
     timerSettings: formInput,
     notifSettings: notifFormInput
+    }
   }
-  console.log("yo")
-  chrome.runtime.sendMessage(userSettings);
+  chrome.runtime.sendMessage(newTimerMessage);
   if(formInput.domain != ""){
     $("#savedDomain").html("<li>" + "Watching For: " + formInput.domain + "</li>");
     $("#timerLength").html("<li>" +"Timer For: " + formInput.minutes + "</li>");
@@ -63,11 +78,11 @@ $("#darkModeButton").click(function(){
   $("#holder").toggleClass("darkMode");
   $("#holder").toggleClass("lightMode");
   if($("#darkModeButton").hasClass("off")){
-    $("#darkModeButton").toggleClass("off").text("Light Mode");
-    $("#darkModeButton").toggleClass("on");
+    $("#darkModeButton").toggleClass("off on").text("Light Mode");
+    $("div.card-body").toggleClass("card-body-darkMode");
   } else {
-    $("#darkModeButton").toggleClass("on").text("Dark Mode");
-    $("#darkModeButton").toggleClass("off");
+    $("#darkModeButton").toggleClass("on off").text("Dark Mode");
+    $("div.card-body").toggleClass("card-body-darkMode");
   }
 })
 

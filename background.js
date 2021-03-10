@@ -6,17 +6,24 @@ let userInput = {};
 // let savedSettings = null;
 
 function SaveSettings(input){
-  chrome.storage.sync.set({stored: input}, function() {
-    const savedNotif = {
-      type: "basic",
-      iconUrl: 'images/pixel_waterfall_128.png',
-      title: 'Timer has been saved',
-      message: "friends don't let friends scroll alone",
-      eventTime: 2000,
-      silent: true
-    }
-    chrome.notifications.create(savedNotif);
-  });
+  let savedNotif = {
+    type: "basic",
+    iconUrl: 'images/pixel_waterfall_128.png',
+    title: 'Timer Loaded',
+    message: "friends don't let friends scroll alone",
+    eventTime: 2000,
+    silent: true
+  }
+  if(input.type === "load"){
+    savedNotif.title = "Timer Loaded from Local Storage";
+  } else {
+    savedNotif.title = "Timer Settings saved";
+    input = input.result;
+    console.log(input)
+    chrome.storage.sync.set({stored: input}, function() {
+    });
+  }
+  chrome.notifications.create(savedNotif);
 }
 // function LoadSettings(){
 //   chrome.storage.sync.get(["stored"], function(result) {
@@ -34,19 +41,20 @@ function onUserInput(message){
   // if(message.save === true && userInput != {}){
     
   // }
+  console.log(message)
   if(message.on != undefined){
     onOffState = message;
-  } else if (message.timerSettings != undefined) {
+  } else if (message.result.timerSettings != undefined) {
     console.log("saved");
     console.log(message);
     SaveSettings(message);
-    userInput = message.timerSettings;
+    userInput = message.result.timerSettings;
     if(userInput.minutes === null && userInput.customMin != null){
       userInput.minutes = userInput.customMin;
     } else if(userInput.minutes === null && userInput.customMin === null){
       userInput.minutes = 1;
     }
-    notifSettings = message.notifSettings;
+    notifSettings = message.result.notifSettings;
   } 
 }
 chrome.tabs.onCreated.addListener(function() {
@@ -91,6 +99,9 @@ chrome.tabs.onHighlighted.addListener(function() {
   if(userInput.watchMethod === "onChangeTab" && onOffState.on === true){
     if(alarmSet == true){
       console.log("Hold it citizen, an alarm already exists")
+    } else if (userInput.domain === "<all_urls>"){
+      chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
+      alarmSet = true;
     } else if(userInput != {}){
       chrome.tabs.query({active: true, currentWindow: true}, tabs => {
         console.log(userInput)
@@ -119,6 +130,8 @@ chrome.tabs.onHighlighted.addListener(function() {
           console.log("No Alarm Parameters Present")
         }
       })
+    } else {
+      console.log("alarm already set")
     }
   }
 });
