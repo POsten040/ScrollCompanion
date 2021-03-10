@@ -30,13 +30,14 @@ function LoadSettings(){
 //Message comes from form button
 chrome.runtime.onMessage.addListener(onUserInput);
 function onUserInput(message){
-  if(message.save === true && userInput != {}){
-    SaveSettings(message);
-  }
+  // if(message.save === true && userInput != {}){
+    
+  // }
   if(message.on != undefined){
     onOffState = message;
   } else if (message.timerSettings != undefined) {
     console.log(message);
+    SaveSettings(message);
     userInput = message.timerSettings;
     if(userInput.minutes === null && userInput.customMin != null){
       userInput.minutes = userInput.customMin;
