@@ -17,14 +17,14 @@
     </div>
     
     <div class="titleScreenButtons" class="btn-group btn-group-toggle"">
-      <button class="off btn" id="onButton">Off</button>
-      <button class="off btn" id="darkModeButton">Darkmode</button>
+      <button class="off btn titleScreenButtons" id="onButton">Off</button>
+      <button class="off btn titleScreenButtons" id="darkModeButton">Dark</button>
       <div class="popup">
         <span id="errorPopup" class="popupText">No Saved Data</span>
       </div>
-      <button class="off btn" id="loadButton">Load Timer</button>
+      <button class="off btn titleScreenButtons" id="loadButton">Load</button>
+      <button class="off btn titleScreenButtons" id="genericTimer">Generic</button>
     </div>
-
   </div>
   <div id="accordion">
     <div class="card">
@@ -139,21 +139,11 @@
         </h5>
       </div>
       <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-        <div class="card-body">
+        <div id="settingDisplayContainer" class="card-body">
           <div id="settingsDisplay">
-            <container>
-              <row>
-                <col-sm>
-                <ul id="savedDomain"></ul>
-                </col-sm>
-              </row>
-              <row>
-                <col-sm>
-                  <ul id="timerLength"></ul>
-                </col-sm>
-              </row>
-              <br/>
-            </container>
+            <span id="savedDomain"></span><br/>
+            <span id="savedTime"></span><br/>
+            <span id="savedKeywords"></span>
           </div>
         </div>
       </div>

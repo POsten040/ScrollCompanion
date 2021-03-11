@@ -1,6 +1,6 @@
 {  
   "name": "Scroll Companion",  
-  "description": "A timer for you",  
+  "description": "A little bot to watch your urls and start timers",  
   "version": "1.0",  
   "manifest_version": 2,
   "background": {    
@@ -19,6 +19,15 @@
     "alarms",
     "notifications"
     ],
+    "commands": {
+      "start_generic_timer": {
+        "suggested_key": {
+          "default": "Alt+S",
+          "mac": "Alt+S"
+        },
+        "description": "start generic timer"
+      }
+    },
   "browser_action": {    
     "default_popup": "popup.html",
     "default_icon": {      

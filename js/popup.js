@@ -8,26 +8,21 @@ function LoadSettings(){
       }
       chrome.runtime.sendMessage(message)
     } else {
-      $("#errorPopup").toggleClass("show");
-      chrome.alarms.create("loadPopup", {delayInMinutes: 1})
+      $("#errorPopup").addClass("show");
+      // chrome.alarms.create("loadPopup", {delayInMinutes: 1})
       // $("#errorPopup").toggleClass("show")
     }
   })
 }
-chrome.alarms.onAlarm.addListener(function( alarm ) {
-  console.log("load alarm")
-  if(alarm.name === "loadPopup"){
-    $("#errorPopup").toggleClass("show")
-  }
-})
-
+// chrome.alarms.onAlarm.addListener(function( alarm ) {
+//   console.log("load alarm")
+//   if(alarm.name === "loadPopup"){
+//     $("#errorPopup").toggleClass("show")
+//   }
+// })
 $("#loadButton").click(function(){
   LoadSettings();
 })
-// $("#saveTimer").click(function(){
-//   console.log("clicked");
-//   chrome.runtime.sendMessage({save: true});
-// })
 $("button.formSubmit").click(function(){
   let formInput = {
     minutes: parseInt(($('input:radio[name=minRadioButtons]:checked').val() != null ? $('input:radio[name=minRadioButtons]:checked').val() : $("#customMin").val())),
@@ -55,11 +50,12 @@ $("button.formSubmit").click(function(){
   chrome.runtime.sendMessage(newTimerMessage);
   if(formInput.domain != ""){
     $("#savedDomain").html("<li>" + "Watching For: " + formInput.domain + "</li>");
-    $("#timerLength").html("<li>" +"Timer For: " + formInput.minutes + "</li>");
+    $("#savedTime").html("<li>" +"Timer For: " + formInput.minutes + "</li>");
+    $("#savedKeywords").html("<li>" +"Keywords: " + formInput.keywords + "</li>");
   }
   $("input").val("");
+  $("#errorPopup").removeClass("show");
 })
-
 $("#clearSettings").click(function(){
   $("input").val("");
   const resetSettings = {
@@ -73,19 +69,17 @@ $("#clearSettings").click(function(){
   }
   chrome.runtime.sendMessage(resetSettings);
 })
-
 $("#darkModeButton").click(function(){
   $("#holder").toggleClass("darkMode");
   $("#holder").toggleClass("lightMode");
   if($("#darkModeButton").hasClass("off")){
-    $("#darkModeButton").toggleClass("off on").text("Light Mode");
+    $("#darkModeButton").toggleClass("off on").text("Light");
     $("div.card-body").toggleClass("card-body-darkMode");
   } else {
-    $("#darkModeButton").toggleClass("on off").text("Dark Mode");
+    $("#darkModeButton").toggleClass("on off").text("Dark");
     $("div.card-body").toggleClass("card-body-darkMode");
   }
 })
-
 $("#onButton").click(function(){
   if($("#onButton").hasClass("off")){
     $("#onButton").toggleClass("off on").text("On");
@@ -104,9 +98,6 @@ $("#interact").click(function(){
     $("#interact").toggleClass("off");
   }
 })
-// $("#interactButton").click(function(){
-//   console.log("input")
-// })
 $("#silent").click(function(){
   if($("#silent").hasClass("off")){
     $("#silent").toggleClass("off").text("Yes");
@@ -185,7 +176,6 @@ $("#timerSettingCollapse").click(function(){
   }
   $("#collapseOne").toggleClass("show");
 });
-
 $("#notifSettingCollapse").click(function(){
   if($("#collapseOne").hasClass("show")){
     $("#collapseOne").toggleClass("show")
@@ -204,6 +194,9 @@ $("#currentTimerCollapse").click(function(){
   }
   $("#collapseThree").toggleClass("show");
 });
+$("#genericTimer").click(function(){
+  chrome.runtime.sendMessage({type: "generic"})
+})
 
 
 // document.getElementById("modal").addEventListener("click", function() {

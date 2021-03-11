@@ -99,11 +99,14 @@ div.lightMode {
   background-color: #706477ce;
   color: rgb(176, 245, 230);
 }
+div#settingDisplayContainer{
+  background-color: rgb(27, 27, 27);
+}
 div#settingsDisplay{
   display: flex;
   border: 5px white;
   flex-flow: column wrap;
-  background-color: black;
+  background-color: rgb(27, 27, 27);
   color:wheat;
   font-family: 'Press Start 2P', cursive;
   font-size: small;
@@ -140,6 +143,9 @@ div#tabButtonHolder{
   word-wrap: unset;
   width: 70%;
   height: 10%;
+}
+button.titleScreenButtons{
+  height:fit-content;
 }
 input.radio{
   opacity: 0;

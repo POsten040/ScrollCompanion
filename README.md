@@ -19,6 +19,23 @@ Scroll Compainon works by listening for specific domains or keywords in the url 
 
 <h3>Use</h3>
 
+**Basic Use** 
+1. A user can specify a domain for Scrollcompanion to watch by expanding the Timer Settings and typing in a domain. 
+
+Example:
+  - I select 5min timer, and type 'google' in the domain text box. 
+  - The code will check the highlighted sections of the URL for that keyword.
+
+This URL will not start a timer.
+
+<mark>https://epicenter.epicodus.com</mark>/students/5081/courses
+
+This URL will start a timer.
+
+<mark>https://www.google.com/</mark>
+
+- They keyword works in the same way, but checks the path of the URL
+
 **Tab Query Method**
 
 1. The on Created method:

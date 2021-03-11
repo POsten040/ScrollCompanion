@@ -3,7 +3,6 @@ let alarmSet = false;
 let tabId = null;
 let notifSettings = {};
 let userInput = {};
-// let savedSettings = null;
 
 function SaveSettings(input){
   let savedNotif = {
@@ -19,34 +18,29 @@ function SaveSettings(input){
   } else {
     savedNotif.title = "Timer Settings saved";
     input = input.result;
-    console.log(input)
     chrome.storage.sync.set({stored: input}, function() {
     });
   }
   chrome.notifications.create(savedNotif);
 }
-// function LoadSettings(){
-//   chrome.storage.sync.get(["stored"], function(result) {
-//     if(result.stored != undefined){
-//       console.log(result.stored)
-//       chrome.runtime.sendMessage(result.stored)
-//     } else {
-//       console.log("No Saved Data")
-//     }
-//   })
-// }
 //Message comes from form button
 chrome.runtime.onMessage.addListener(onUserInput);
 function onUserInput(message){
-  // if(message.save === true && userInput != {}){
-    
-  // }
-  console.log(message)
   if(message.on != undefined){
     onOffState = message;
+  } else if(message.type === "generic"){
+    console.log("generic timer")
+    let genericNotif = {
+      type: "basic",
+      iconUrl: 'images/pixel_waterfall_128.png',
+      title: 'Timer Set For 1 Minute',
+      message: "friends don't let friends scroll alone",
+      eventTime: 2000,
+      silent: true
+    }
+    chrome.alarms.create('genericAlarm', {delayInMinutes: 1})
+    chrome.notifications.create(genericNotif);
   } else if (message.result.timerSettings != undefined) {
-    console.log("saved");
-    console.log(message);
     SaveSettings(message);
     userInput = message.result.timerSettings;
     if(userInput.minutes === null && userInput.customMin != null){
@@ -96,6 +90,7 @@ chrome.tabs.onCreated.addListener(function() {
   }
 });
 
+
 chrome.tabs.onHighlighted.addListener(function() {
   if(userInput.watchMethod === "onChangeTab" && onOffState.on === true){
     if(alarmSet == true){
@@ -136,11 +131,41 @@ chrome.tabs.onHighlighted.addListener(function() {
     }
   }
 });
-
+chrome.commands.onCommand.addListener(function(command) {
+  console.log('Command:', command);
+  let genericNotif = {
+    type: "basic",
+    iconUrl: 'images/pixel_waterfall_128.png',
+    title: 'Timer Set For 1 Minute',
+    message: "friends don't let friends scroll alone",
+    eventTime: 2000,
+    silent: true
+  }
+  chrome.alarms.create('genericAlarm', {delayInMinutes: 1})
+  chrome.notifications.create(genericNotif);
+});
 
 //revceives alarm after timer
 chrome.alarms.onAlarm.addListener(function( alarm ) {
-  chrome.notifications.create('', notifSettings)
-  chrome.alarms.clear(alarm.name)
-  alarmSet = false;
+  let genericNotifSettings = null;
+  if(alarm.name === "genericAlarm"){
+    genericNotifSettings = {
+      type: "basic",
+      iconUrl: "images/pixel_waterfall_128.png",
+      title: "The Fuzz!",
+      message: "Better Cheese It!",
+      eventTime: 5000,
+      silent: false,
+      requireInteraction: false
+    }
+  }
+  if(genericNotifSettings != null){
+    chrome.notifications.create('', genericNotifSettings)
+    chrome.alarms.clear(alarm.name)
+    alarmSet = false;
+  } else {
+    chrome.notifications.create('', notifSettings)
+    chrome.alarms.clear(alarm.name)
+    alarmSet = false;
+  }
 })
