@@ -8,10 +8,10 @@ function LoadSettings(){
       }
       chrome.runtime.sendMessage(message);
       let data = result.stored;
-      $("#savedDomain").text(data.timerSettings.domain);
-      $("#savedMinutes").text(data.timerSettings.minutes);
-      $("#savedKeywords").text(data.timerSettings.keywords);
-      $("#savedMethod").text(data.timerSettings.watchMethod);
+      $("#savedDomain").html("<li>" + "Domain: " + data.timerSettings.domain + "</li>");
+      $("#savedMinutes").html("<li>" +"Minutes: " + data.timerSettings.minutes + "</li>");
+      $("#savedKeywords").html("<li>" +"Keywords: " + data.timerSettings.keywords + "</li>");
+      $("#savedMethod").html("<li>" +"Watch Method: " + data.timerSettings.watchMethod + "</li>");
     } else {
       $("#errorPopup").addClass("show");
       // chrome.alarms.create("loadPopup", {delayInMinutes: 1})
@@ -30,8 +30,8 @@ $("#loadButton").click(function(){
 })
 $("button.formSubmit").click(function(){
   let formInput = {
-    minutes: parseInt(($('input:radio[name=minRadioButtons]:checked').val() != null ? $('input:radio[name=minRadioButtons]:checked').val() : $("#customMin").val())),
-    customMin: parseInt(($("#customMin").val() != null) ? $("#customMin").val() : 1),
+    customMin: (parseInt($("#customMin").val())) != NaN ?  1 : $("#customMin").val(),
+    minutes: (parseInt($('input:radio[name=minRadioButtons]:checked').val())) != NaN ? null :  $('input:radio[name=minRadioButtons]:checked').val(),
     domain: ($("#domain").val() != "") ? $("#domain").val() : "<all_urls>",
     keywords: ($("#keywords").val() != "") ? $("#keywords").val() : "",
     watchMethod: ($("input:radio[name=watchMethodRadioButtons]:checked").val() != undefined) ? $("input:radio[name=watchMethodRadioButtons]:checked").val() : "onNewTab"
@@ -45,6 +45,8 @@ $("button.formSubmit").click(function(){
     silent: ($('input:radio[name=silent]:checked').val() != undefined) ? true : false,
     requireInteraction: ($('input:radio[name=interactInput]:checked').val() != undefined) ? true : false
   }
+  console.log(formInput)
+  console.log(notifFormInput)
   let newTimerMessage = {
     type: "new",
     result: {
@@ -54,9 +56,10 @@ $("button.formSubmit").click(function(){
   }
   chrome.runtime.sendMessage(newTimerMessage);
   if(formInput.domain != ""){
-    $("#savedDomain").html("<li>" + "Watching For: " + formInput.domain + "</li>");
+    $("#savedDomain").html("<li>" + "Domain: " + formInput.domain + "</li>");
     $("#savedMinutes").html("<li>" +"Minutes: " + formInput.minutes + "</li>");
     $("#savedKeywords").html("<li>" +"Keywords: " + formInput.keywords + "</li>");
+    $("#savedMethod").html("<li>" +"Watch Method: " + formInput.watchMethod + "</li>");
   }
   $("input").val("");
   $("#errorPopup").removeClass("show");

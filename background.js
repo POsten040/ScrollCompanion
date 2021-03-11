@@ -45,14 +45,15 @@ function onUserInput(message){
     userInput = message.result.timerSettings;
     if(userInput.minutes === null && userInput.customMin != null){
       userInput.minutes = userInput.customMin;
-    } else if(userInput.minutes === null && userInput.customMin === null){
-      userInput.minutes = 1;
     }
     notifSettings = message.result.notifSettings;
   } 
+  console.log(userInput)
+  console.log(notifSettings)
 }
 chrome.tabs.onCreated.addListener(function() {
-  console.log(onOffState);
+  console.log(userInput);
+  console.log(notifSettings);
   if(userInput.watchMethod === "onNewTab" && onOffState.on === true){
     if(alarmSet === true){
       console.log("Hold it citizen, an alarm already exists")
@@ -70,13 +71,13 @@ chrome.tabs.onCreated.addListener(function() {
         let domains = urlArr.splice(0, 3);
         let matchingDomain = domains.find(e=> e.includes(userInput.domain));
         let matchingKeyword = urlArr.find(e=> e.includes(userInput.keywords))
-        if(userInput.keywords != ""){
+        if(userInput.keywords != "" && userInput.keywords != undefined && matchingDomain != undefined){
           if(matchingKeyword.includes(userInput.keywords) && matchingDomain.includes(userInput.domain)){
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
             alarmSet = true;
             console.log("alarm set")
           }
-        } else if (userInput.domain != ""){ 
+        } else if (userInput.domain != "" && matchingDomain != undefined){ 
           if(matchingDomain.includes(userInput.domain)){
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
             alarmSet = true;
@@ -96,7 +97,7 @@ chrome.tabs.onCreated.addListener(function() {
 
 
 chrome.tabs.onHighlighted.addListener(function() {
-  console.log(onOffState);
+  console.log(userInput);
   if(userInput.watchMethod === "onChangeTab" && onOffState.on === true){
     if(alarmSet === true){
       console.log("Hold it citizen, an alarm already exists")
@@ -114,13 +115,13 @@ chrome.tabs.onHighlighted.addListener(function() {
         let domains = urlArr.splice(0, 3);
         let matchingDomain = domains.find(e=> e.includes(userInput.domain));
         let matchingKeyword = urlArr.find(e=> e.includes(userInput.keywords));
-        if(userInput.keywords != ""){
+        if(userInput.keywords != "" && userInput.keywords != undefined && matchingDomain != undefined){
           if(matchingKeyword.includes(userInput.keywords) && matchingDomain.includes(userInput.domain)){
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
             alarmSet = true;
             console.log("alarm set")
           }
-        } else if (userInput.domain != ""){ 
+        } else if (userInput.domain != "" && matchingDomain != undefined){ 
           if(matchingDomain.includes(userInput.domain)){
             chrome.alarms.create("userAlarm", {delayInMinutes: userInput.minutes});
             alarmSet = true;
