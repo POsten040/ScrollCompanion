@@ -20,21 +20,57 @@ Scroll Compainon works by listening for specific domains or keywords in the url 
 <h3>Use</h3>
 
 **Basic Use** 
-1. A user can specify a domain for Scrollcompanion to watch by expanding the Timer Settings and typing in a domain. 
+1. A user can specify a domain for Scrollcompanion to watch by expanding the Timer Settings and typing in a domain. Any settings not specified by the user will revert to defaults. See default in the Messages section below.  
 
 Example:
-  - I select 5min timer, and type 'google' in the domain text box. 
-  - The code will check the highlighted sections of the URL for that keyword.
 
-This URL will not start a timer.
+- When first loaded, no preset settings are available and clicking 'Load' will let you know that.
+- Every time the Submit button is clicked the settings present are saved in local storage. Only one timer at a time can be saved or run. 
+
+![shows the no saved timer settings message](images/SC_Instructions_2.png)
+
+- In the Timer Settings form you can specify these settings:
+
+domain : the scheme or host, see [IBM Article](https://www.ibm.com/support/knowledgecenter/SSGMCP_5.1.0/com.ibm.cics.ts.internet.doc/topics/dfhtl_uricomp.html)  
+
+keywords : the URL path(see above link) 
+
+time : In minutes 
+
+tab query method : See URL parsing for more info.
+
+- NOTE: custom minutes will <em>always</em> the minute buttons, even if they are green when submitting.
+
+![](images/SC_Instructions_1.png)
+
+These URL will not start a timer.
 
 <mark>https://epicenter.epicodus.com</mark>/students/5081/courses
 
+<mark>https://www.example.com/</mark>reddit
+
 This URL will start a timer.
 
-<mark>https://www.google.com/</mark>
+<mark>https://www.reddit.com/</mark>
 
-- They keyword works in the same way, but checks the path of the URL
+- They keyword works in the same way, but checks the path of the URL, or everythign after '.com, .org, e.t.c'.
+- If a keyword and domain is specified then both matches must be found to create a timer. 
+- Notification settings are the same structure as Timer settings, and include these:
+
+title : Title of the notification
+
+message : message on notification
+
+eventTime : how long it appears for in milliseconds
+
+require interaction : Whether you need to click or focus on the notification to make it go away
+
+silent : whether the notification makes sound when it appears
+  - (sound is default system sound and connot be edited from this app)
+
+  - Note that the eventTime is how long the notification appears for and is counted in milliseconds.
+
+![shows notification settings form](images/SC_Instructions_3.png)
 
 **Tab Query Method**
 
