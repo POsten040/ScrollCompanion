@@ -12,10 +12,12 @@ Have you ever been browsing the internet and decided to close the tab and get to
 Scroll Compainon works by listening for specific domains or keywords in the url and setting a timer if a match is found.
 
 ### Planned Additional features:
+- set ScrollCompanion to watch on certain schedules/days/hours
 - link to external websites when the timer finishes
 - 'ScrollComPAINion' where the windows is automatically closed when the timer finishes
 - snapshot of active tab/content when the timer finishes
 - better url parsing
+- soundscapes
 
 <h3>Use</h3>
 

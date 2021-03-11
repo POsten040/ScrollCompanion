@@ -6,7 +6,12 @@ function LoadSettings(){
         type: "load",
         result: result.stored
       }
-      chrome.runtime.sendMessage(message)
+      chrome.runtime.sendMessage(message);
+      let data = result.stored;
+      $("#savedDomain").text(data.timerSettings.domain);
+      $("#savedMinutes").text(data.timerSettings.minutes);
+      $("#savedKeywords").text(data.timerSettings.keywords);
+      $("#savedMethod").text(data.timerSettings.watchMethod);
     } else {
       $("#errorPopup").addClass("show");
       // chrome.alarms.create("loadPopup", {delayInMinutes: 1})
@@ -50,7 +55,7 @@ $("button.formSubmit").click(function(){
   chrome.runtime.sendMessage(newTimerMessage);
   if(formInput.domain != ""){
     $("#savedDomain").html("<li>" + "Watching For: " + formInput.domain + "</li>");
-    $("#savedTime").html("<li>" +"Timer For: " + formInput.minutes + "</li>");
+    $("#savedMinutes").html("<li>" +"Minutes: " + formInput.minutes + "</li>");
     $("#savedKeywords").html("<li>" +"Keywords: " + formInput.keywords + "</li>");
   }
   $("input").val("");

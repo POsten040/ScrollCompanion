@@ -15,7 +15,6 @@
     <div id="titleScreen" class="container">
       <h1 id="titleH1">Scroll Companion</h1>
     </div>
-    
     <div class="titleScreenButtons" class="btn-group btn-group-toggle"">
       <button class="off btn titleScreenButtons" id="onButton">Off</button>
       <button class="off btn titleScreenButtons" id="darkModeButton">Dark</button>
@@ -105,7 +104,7 @@
                 <input type="text" id="title" class="textInput"/>
                 <br/>
                 <label class="notifLabels for="message">Message:</label>
-                <input type="text" id="message" class="textInput"/>
+                <textarea rows="1" type="text" id="message" class="textInput"></textarea>
                 <br/>
                 <label for="eventTime" class="notifLabels">Event Time(in milliseconds):</label>
                 <input type="number" id="eventTime" class="textInput"/>
@@ -142,8 +141,9 @@
         <div id="settingDisplayContainer" class="card-body">
           <div id="settingsDisplay">
             <span id="savedDomain"></span><br/>
-            <span id="savedTime"></span><br/>
-            <span id="savedKeywords"></span>
+            <span id="savedMinutes"></span><br/>
+            <span id="savedKeywords"></span><br/>
+            <span id="savedMethod"></span>
           </div>
         </div>
       </div>

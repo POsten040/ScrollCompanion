@@ -1,6 +1,6 @@
 div#titleScreen{
-  height: 400px;
-  width: 440px;
+  height: auto;
+  width: auto;
 }
 h1#titleH1{
   font-family: 'Press Start 2P', cursive;
@@ -143,6 +143,10 @@ div#tabButtonHolder{
   word-wrap: unset;
   width: 70%;
   height: 10%;
+}
+div.titleScreenButtons{
+  display: flex;
+  flex-direction: column;
 }
 button.titleScreenButtons{
   height:fit-content;
