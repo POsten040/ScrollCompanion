@@ -20,26 +20,32 @@ Scroll Compainon works by listening for specific domains or keywords in the url 
 <h3>Use</h3>
 
 **Basic Use** 
-1. A user can specify a domain for Scrollcompanion to watch by expanding the Timer Settings and typing in a domain. Any settings not specified by the user will revert to defaults. See default in the Messages section below.  
+1. A user can specify a domain for ScrollCompaion to watch by expanding the Timer Settings and typing in a domain. Any settings not specified by the user will revert to defaults. See default in the Messages section below. 
+2. The 'Dark' button changes the theme to dark mode.
+3. The 'Load' button loads any settings stored from previous uses.
+4. The 'Generic' button starts a generic timer for five minutes no matter what page you're on.
 
 Example:
 
-- When first loaded, no preset settings are available and clicking 'Load' will let you know that.
+- When first loaded, no preset settings are available and clicking 'Load' will do nothing. Load data will onyl be present if the extension has been used before with your google account or on your device.
+- Saved data is synced to your google account, and can be accessed from different devices as long as you are logged in.
 - Every time the Submit button is clicked the settings present are saved in local storage. Only one timer at a time can be saved or run. 
 
 ![shows the no saved timer settings message](images/SC_Instructions_2.png)
 
 - In the Timer Settings form you can specify these settings:
+  - for info on URLs see
+[IBM Article](https://www.ibm.com/support/knowledgecenter/SSGMCP_5.1.0/com.ibm.cics.ts.internet.doc/topics/dfhtl_uricomp.html) 
+```
+domain : the scheme or host
 
-domain : the scheme or host, see [IBM Article](https://www.ibm.com/support/knowledgecenter/SSGMCP_5.1.0/com.ibm.cics.ts.internet.doc/topics/dfhtl_uricomp.html)  
-
-keywords : the URL path(see above link) 
+keywords : the URL path
 
 time : In minutes 
 
-tab query method : See URL parsing for more info.
-
-- NOTE: custom minutes will <em>always</em> the minute buttons, even if they are green when submitting.
+tab query method : See Tab Query Method for more info.
+```
+- NOTE: if custom minutes is anything except and empty string ("", which means nothing has been entered into the custom min text box) it will <em>always</em> override the minute buttons, even if they are green when submitting.
 
 ![](images/SC_Instructions_1.png)
 
@@ -56,7 +62,7 @@ This URL will start a timer.
 - They keyword works in the same way, but checks the path of the URL, or everythign after '.com, .org, e.t.c'.
 - If a keyword and domain is specified then both matches must be found to create a timer. 
 - Notification settings are the same structure as Timer settings, and include these:
-
+```
 title : Title of the notification
 
 message : message on notification
@@ -67,7 +73,7 @@ require interaction : Whether you need to click or focus on the notification to 
 
 silent : whether the notification makes sound when it appears
   - (sound is default system sound and connot be edited from this app)
-
+```
   - Note that the eventTime is how long the notification appears for and is counted in milliseconds.
 
 ![shows notification settings form](images/SC_Instructions_3.png)
@@ -159,7 +165,7 @@ formInput{
 ```
 ```
 notificationFormInput{
-	iconUrl: scrollcompanion.icon,
+	iconUrl: ScrollCompaion.icon,
 	title: title ? title : "Generic Title",
 	message: message ? message : "The Time Is Now",
 	eventTime: eventTime(milliseconds) ? eventTime : 5000,
